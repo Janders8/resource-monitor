@@ -8,13 +8,21 @@ class Ram:
     def initiateMonitor():
         df = pd.DataFrame()
         df["ram used %"] = None
-
         return df
 
 
     @staticmethod
     def getRamPercentage():
-        return 'RAM memory used: ' + str(psutil.virtual_memory()[2]) + "%"
+        return psutil.virtual_memory()[2]
+
+    @staticmethod
+    def getRamUsed():
+        return psutil.virtual_memory()[3]
+
+    @staticmethod
+    def getRamTotal():
+        return psutil.virtual_memory()[0]
+
 
 
 
@@ -26,3 +34,4 @@ class Ram:
 #print(psutil.cpu_count(logical=False))
 
 #print(psutil.disk_usage('/')[3])
+
