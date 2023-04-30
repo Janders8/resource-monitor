@@ -1,10 +1,22 @@
 from ram import Ram
 from cpu import Cpu
-from test import *
+from gui import *
 import sys
 from PyQt5.QtWidgets import (
     QApplication, QDialog, QMainWindow, QMessageBox
 )
+from PyQt5.QtCore import QTimer
+
+
+
+df = Cpu.initiateMonitor()
+# while True:
+#
+#
+#     df.loc[len(df)] = Cpu.getThreadUsage()
+#
+#     print(df)
+
 
 
 class Window(QMainWindow):
@@ -13,17 +25,18 @@ class Window(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.ui.textBrowser.setText("test")
+        # starting text
+        self.ui.textBrowser.setText(str(Cpu.getThreadUsage()))
 
+        # timer
+        self.timer = QTimer()
+        self.timer.setInterval(1000)
+        self.timer.start()
 
-df = Cpu.initiateMonitor()
+        self.timer.timeout.connect(self.update)
+    def update(self):
 
-# while True:
-#
-#
-#     df.loc[len(df)] = Cpu.getThreadUsage()
-#
-#     print(df)
+        self.ui.textBrowser.setText(str(Cpu.getThreadUsage()))
 
 
 if __name__ == "__main__":
