@@ -13,6 +13,8 @@ class Gpu:
     else:
         GPUs = [None]
 
+
+
     @staticmethod
     def initiateMonitor():
         df = pd.DataFrame()
@@ -29,27 +31,27 @@ class Gpu:
     @staticmethod
     def getGpuLoad():
         try:
-            return Gpu.GPUs[0].load * 100
+            return GPUtil.getGPUs()[0].load * 100
         except:
             return ""
 
     @staticmethod
     def getGpuMemoryUsed():
         try:
-            return round(Gpu.GPUs[0].memoryUtil * 100,1)
+            return round(GPUtil.getGPUs()[0].memoryUtil * 100,1)
         except:
             return ""
 
     @staticmethod
     def getGpuName():
         try:
-            return Gpu.GPUs[0].name
+            return GPUtil.getGPUs()[0].name
         except:
             return ""
     @staticmethod
     def getGpuTemp():
         try:
-            return Gpu.GPUs[0].temperature
+            return GPUtil.getGPUs()[0].temperature
         except:
             return ""
 
