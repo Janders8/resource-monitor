@@ -93,13 +93,13 @@ class Window(QMainWindow):
         # if logging is enabled
         if self.isLogging:
             df = self.csv.dfHeaders
-            #print(df)
+            print(df)
 
             # cpu
             #print(cpuThread)
 
 
-            newRow = cpuThread + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp]
+            newRow = cpuThread + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp]
 
             print(gpuMemory)
 

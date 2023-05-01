@@ -12,6 +12,8 @@ class Cpu:
         for i in range(0, psutil.cpu_count()):
             df["thread_" + str(i) + " Load"] = None
 
+        df["cpuTemp"] = None
+
         return df
 
 
