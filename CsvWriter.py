@@ -5,6 +5,7 @@ import pandas as pd
 
 class CsvWriter(object):
     fileName = "monitoring.csv"
+    dfHeaders = None
 
     def __new__(cls):
         if not hasattr(cls, 'instance'):
@@ -13,23 +14,37 @@ class CsvWriter(object):
 
     def __init__(self):
         df = pd.DataFrame()
-        ram = Ram.initiateMonitor()
-        print(ram)
-        df = pd.concat([df, ram])
-        cpu = Cpu.initiateMonitor()
-        print(cpu)
-        df = pd.concat([df, cpu])
 
+        #cpu
+        cpu = Cpu.initiateMonitor()
+        #print(cpu)
+        df = pd.concat([df, cpu])
+        #ram
+        ram = Ram.initiateMonitor()
+        #print(ram)
+        df = pd.concat([df, ram])
+
+        #gpu
         gpu = Gpu.initiateMonitor()
         df = pd.concat([df, gpu])
 
         #todo disk....
 
 
-        print(df)
+        #print(df)
+        self.dfHeaders = df
 
-        df.to_csv(CsvWriter.fileName, encoding='utf-8', index = False)
+
+        self.dfHeaders.to_csv(CsvWriter.fileName, encoding='utf-8', index = False)
+
+
+    def addRecord(self):
+        df = self.dfHeaders
+
+
+
 
 
 if __name__ == "__main__":
     one = CsvWriter()
+    two = CsvWriter()

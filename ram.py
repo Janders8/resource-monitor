@@ -28,6 +28,12 @@ class Ram:
     def getRamTotal():
         return round(Ram.bytesToGigabytes(psutil.virtual_memory()[0]),2)
 
+    @staticmethod
+    def getRamList(self):
+        pass
+
+
+
 
 
 

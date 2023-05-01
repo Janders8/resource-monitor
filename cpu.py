@@ -19,11 +19,13 @@ class Cpu:
     def getThreadUsage():
         return psutil.cpu_percent(interval=0.1, percpu=True)
 
+
+
     @staticmethod
-    def getFormatedThreadUsage():
+    def getFormatedThreadUsage(ThreadUsage):
         result = ""
-        values = Cpu.getThreadUsage()
-        for i, v in enumerate(values):
+
+        for i, v in enumerate(ThreadUsage):
             result += "thread_" + str(i) + " :" + str(v) + "\n"
 
         return result
@@ -51,8 +53,8 @@ class Cpu:
             return ""
 
 
-
-print(Cpu.getCpusTemp())
+#print (Cpu.getThreadUsage())
+# print(Cpu.getCpusTemp())
 
 # df = Cpu.initiateMonitor()
 #

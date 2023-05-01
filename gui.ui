@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>952</width>
-    <height>781</height>
+    <width>833</width>
+    <height>818</height>
    </rect>
   </property>
   <property name="mouseTracking">
@@ -185,7 +185,7 @@
         <x>240</x>
         <y>20</y>
         <width>171</width>
-        <height>191</height>
+        <height>201</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayoutGpu">
@@ -264,12 +264,12 @@
         <x>470</x>
         <y>30</y>
         <width>171</width>
-        <height>151</height>
+        <height>191</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayoutDisk">
        <property name="sizeConstraint">
-        <enum>QLayout::SetMaximumSize</enum>
+        <enum>QLayout::SetMinAndMaxSize</enum>
        </property>
        <property name="fieldGrowthPolicy">
         <enum>QFormLayout::FieldsStayAtSizeHint</enum>
@@ -346,13 +346,42 @@
      </widget>
     </widget>
    </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>730</y>
+      <width>351</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="StartLogging">
+       <property name="text">
+        <string>Start logging</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="EndLogging">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>End logging</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>952</width>
+     <width>833</width>
      <height>26</height>
     </rect>
    </property>
