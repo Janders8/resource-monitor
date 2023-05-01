@@ -3,28 +3,45 @@ import GPUtil
 
 class Gpu:
 
-    GPUs = GPUtil.getGPUs()
+
+
+    # if exist any gpu
+    if GPUtil.getGPUs():
+        GPUs = GPUtil.getGPUs()
+    else:
+        GPUs = [None]
 
     @staticmethod
     def getGpuLoad():
-        return Gpu.GPUs[0].load * 100
+        try:
+            return Gpu.GPUs[0].load * 100
+        except:
+            return ""
 
     @staticmethod
     def getGpuMemoryUsed():
-        return round(Gpu.GPUs[0].memoryUtil * 100,1)
+        try:
+            return round(Gpu.GPUs[0].memoryUtil * 100,1)
+        except:
+            return ""
 
     @staticmethod
     def getGpuName():
-        return Gpu.GPUs[0].name
-
+        try:
+            return Gpu.GPUs[0].name
+        except:
+            return ""
     @staticmethod
     def getGpuTemp():
-        return Gpu.GPUs[0].temperature
+        try:
+            return Gpu.GPUs[0].temperature
+        except:
+            return ""
 
 
 
-# print(Gpu.getGpuLoad())
-# print(Gpu.getGpuMemoryUsed())
-#
-# print(Gpu.getGpuName())
-# print(Gpu.getGpuTemp())
+print(Gpu.getGpuLoad())
+print(Gpu.getGpuMemoryUsed())
+
+print(Gpu.getGpuName())
+print(Gpu.getGpuTemp())

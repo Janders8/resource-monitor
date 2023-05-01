@@ -36,19 +36,23 @@ class Cpu:
     def getCpusTemp():
         result = ""
         counter = 0
-        w = wmi.WMI(namespace="root\OpenHardwareMonitor")
-        temperature_infos = w.Sensor()
-        for sensor in temperature_infos:
-            if sensor.SensorType == u'Temperature':
-                if sensor.Name == "CPU Package":
-                    result+= sensor.Name + str(counter) + " " + str(sensor.Value) + "\n"
-                    # print(sensor.Name)
-                    # print(sensor.Value)
-        return result
+        try:
+
+            w = wmi.WMI(namespace="root\OpenHardwareMonitor")
+            temperature_infos = w.Sensor()
+            for sensor in temperature_infos:
+                if sensor.SensorType == u'Temperature':
+                    if sensor.Name == "CPU Package":
+                        result+= sensor.Name + str(counter) + " " + str(sensor.Value) + "\n"
+                        # print(sensor.Name)
+                        # print(sensor.Value)
+            return result
+        except:
+            return ""
 
 
 
-#print(Cpu.getCpusTemp())
+print(Cpu.getCpusTemp())
 
 # df = Cpu.initiateMonitor()
 #
