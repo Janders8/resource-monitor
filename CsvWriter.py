@@ -5,7 +5,7 @@ import pandas as pd
 
 class CsvWriter(object):
     fileName = "monitoring.csv"
-    dfHeaders = None
+
 
     def __new__(cls):
         if not hasattr(cls, 'instance'):
@@ -31,16 +31,9 @@ class CsvWriter(object):
         #todo disk....
 
 
-        #print(df)
+        #create file with headers
         self.dfHeaders = df
-
-
         self.dfHeaders.to_csv(CsvWriter.fileName, encoding='utf-8', index = False)
-
-
-    def addRecord(self):
-        df = self.dfHeaders
-
 
 
 

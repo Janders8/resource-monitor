@@ -45,7 +45,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_3">
            <property name="text">
-            <string>Threats</string>
+            <string>Cores</string>
            </property>
           </widget>
          </item>
@@ -103,7 +103,7 @@
           <x>30</x>
           <y>20</y>
           <width>171</width>
-          <height>131</height>
+          <height>151</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="formLayoutRam">
@@ -179,7 +179,7 @@
           <x>240</x>
           <y>20</y>
           <width>171</width>
-          <height>201</height>
+          <height>161</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="formLayoutGpu">
@@ -255,10 +255,10 @@
        <widget class="QWidget" name="formLayoutWidget_3">
         <property name="geometry">
          <rect>
-          <x>260</x>
-          <y>440</y>
+          <x>270</x>
+          <y>250</y>
           <width>171</width>
-          <height>151</height>
+          <height>394</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="formLayoutDisk">

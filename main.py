@@ -1,3 +1,5 @@
+import pandas as pd
+
 from ram import Ram
 from cpu import Cpu
 from gpu import Gpu
@@ -94,14 +96,17 @@ class Window(QMainWindow):
 
         # if logging is enabled
         if self.isLogging:
-            self.csv.dfHeaders.drop(df.index,inplace=True)
+            #empty dataframe
+            self.csv.dfHeaders.drop(self.csv.dfHeaders.index,inplace=True)
 
-
-            newRow = cpuThread + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp]
-            self.csv.dfHeaders.loc[len(df)] = newRow
+            # create new row
+            newRow = cpuCore + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp]
+            #add new row
+            self.csv.dfHeaders.loc[len(self.csv.dfHeaders)] = newRow
 
             print(self.csv.dfHeaders)
 
+            # save new row
             self.csv.dfHeaders.to_csv(self.csv.fileName, mode="a", index=False, header = False)
 
 
