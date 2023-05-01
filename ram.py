@@ -8,6 +8,8 @@ class Ram:
     def initiateMonitor():
         df = pd.DataFrame()
         df["ram used %"] = None
+        df["ram used"] = None
+        df["ram total"] = None
         return df
 
     @staticmethod

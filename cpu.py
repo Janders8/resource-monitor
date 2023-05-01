@@ -10,7 +10,7 @@ class Cpu:
 
         # create df
         for i in range(0, psutil.cpu_count()):
-            df["thread_" + str(i)] = None
+            df["thread_" + str(i) + " Load"] = None
 
         return df
 
@@ -48,7 +48,7 @@ class Cpu:
 
 
 
-print(Cpu.getCpusTemp())
+#print(Cpu.getCpusTemp())
 
 # df = Cpu.initiateMonitor()
 #

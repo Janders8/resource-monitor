@@ -78,6 +78,11 @@ df = Cpu.initiateMonitor()
 print(str(df.columns))
 
 
+
+
+
+
+
 if __name__ == "__main__":
 
     app = QApplication(sys.argv)

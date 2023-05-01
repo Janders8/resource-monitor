@@ -23,8 +23,8 @@ class Gpu:
 
 
 
-print(Gpu.getGpuLoad())
-print(Gpu.getGpuMemoryUsed())
-
-print(Gpu.getGpuName())
-print(Gpu.getGpuTemp())
+# print(Gpu.getGpuLoad())
+# print(Gpu.getGpuMemoryUsed())
+#
+# print(Gpu.getGpuName())
+# print(Gpu.getGpuTemp())
