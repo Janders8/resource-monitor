@@ -92,20 +92,17 @@ class Window(QMainWindow):
 
         # if logging is enabled
         if self.isLogging:
-            df = self.csv.dfHeaders
-            print(df)
+            self.csv.dfHeaders.drop(df.index,inplace=True)
 
             # cpu
             #print(cpuThread)
 
-
             newRow = cpuThread + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp]
+            self.csv.dfHeaders.loc[len(df)] = newRow
 
-            print(gpuMemory)
+            print(self.csv.dfHeaders)
 
-            df.loc[len(df)] = newRow
-
-            df.to_csv(self.csv.fileName, mode="a", index=False, header = False)
+            self.csv.dfHeaders.to_csv(self.csv.fileName, mode="a", index=False, header = False)
 
 
 
