@@ -48,7 +48,7 @@ class Cpu:
         result = ""
 
         for i, v in enumerate(CoreUsage):
-            result += "core_" + str(i) + " :" + str(v) + "\n"
+            result += "core_" + str(i) + " :" + str(round(v,3)) + "\n"
 
         return result
 
@@ -70,9 +70,13 @@ class Cpu:
 
         # Group the usage of hyper-threading cores with their corresponding physical core
         physical_core_usage_percent = []
-        for i in range(num_physical_cores):
-            core_usage = (all_core_usage_percent[i * 2] + all_core_usage_percent[i * 2 + 1]) / 2
-            physical_core_usage_percent.append(core_usage)
+        # check if there is hyper-threading
+        if (len(all_core_usage_percent) == 2* num_physical_cores):
+            for i in range(num_physical_cores):
+                core_usage = (all_core_usage_percent[i * 2] + all_core_usage_percent[i * 2 + 1]) / 2
+                physical_core_usage_percent.append(core_usage)
+        else:
+            physical_core_usage_percent = all_core_usage_percent
 
 
         return physical_core_usage_percent
