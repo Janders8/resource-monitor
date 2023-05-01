@@ -1,6 +1,9 @@
 import psutil
 import pandas as pd
 import wmi
+import clr
+clr.AddReference("OpenHardwareMonitorLib")
+from OpenHardwareMonitor.Hardware import *
 
 class Cpu:
 
@@ -86,23 +89,18 @@ class Cpu:
 
     @staticmethod
     def getCpusTemp():
-        result = ""
-        counter = 0
-        try:
+        computer = Computer()
+        computer.CPUEnabled = True
+        computer.Open()
+        for hardware in computer.Hardware:
+            if hardware.HardwareType == HardwareType.CPU:
+                hardware.Update()
+                for sensor in hardware.Sensors:
+                    if sensor.SensorType == SensorType.Temperature and sensor.Name == "CPU Package":
+                        return sensor.Value
 
-            w = wmi.WMI(namespace="root\OpenHardwareMonitor")
-            temperature_infos = w.Sensor()
-            for sensor in temperature_infos:
-                if sensor.SensorType == u'Temperature':
-                    if sensor.Name == "CPU Package":
-                        result+= sensor.Name + str(counter) + " " + str(sensor.Value) + "\n"
-                        # print(sensor.Name)
-                        # print(sensor.Value)
-            return result
-        except:
-            return ""
-
-print(Cpu.getCoreUsage())
+print(Cpu.getCpusTemp())
+#print(Cpu.getCoreUsage())
 
 #print (Cpu.getThreadUsage())
 # print(Cpu.getCpusTemp())
