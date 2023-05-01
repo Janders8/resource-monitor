@@ -10,6 +10,9 @@ class Ram:
         df["ram used %"] = None
         return df
 
+    @staticmethod
+    def bytesToGigabytes(int):
+        return int / 1024 / 1024 / 1024
 
     @staticmethod
     def getRamPercentage():
@@ -17,11 +20,11 @@ class Ram:
 
     @staticmethod
     def getRamUsed():
-        return psutil.virtual_memory()[3]
+        return round(Ram.bytesToGigabytes(psutil.virtual_memory()[3]),2)
 
     @staticmethod
     def getRamTotal():
-        return psutil.virtual_memory()[0]
+        return round(Ram.bytesToGigabytes(psutil.virtual_memory()[0]),2)
 
 
 

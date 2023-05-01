@@ -11,7 +11,7 @@ class Gpu:
 
     @staticmethod
     def getGpuMemoryUsed():
-        return Gpu.GPUs[0].memoryUtil * 100
+        return round(Gpu.GPUs[0].memoryUtil * 100,1)
 
     @staticmethod
     def getGpuName():

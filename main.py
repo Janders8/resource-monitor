@@ -43,6 +43,7 @@ class Window(QMainWindow):
         #cpu
         self.ui.textBrowserCpu.setText(str(Cpu.getFormatedThreadUsage()))
         self.ui.textBrowserRamPercent.setText(str(Ram.getRamPercentage()))
+        self.ui.textBrowserCpuTemp.setText(str(Cpu.getCpusTemp()))
         #ram
         self.ui.textBrowserRamUsed.setText(str(Ram.getRamUsed()))
         self.ui.textBrowserRamTotal.setText(str(Ram.getRamTotal()))
@@ -63,6 +64,7 @@ class Window(QMainWindow):
         #cpu
         self.ui.textBrowserCpu.setText(str(Cpu.getFormatedThreadUsage()))
         self.ui.textBrowserRamPercent.setText(str(Ram.getRamPercentage()))
+        self.ui.textBrowserCpuTemp.setText(str(Cpu.getCpusTemp()))
         #ram
         self.ui.textBrowserRamUsed.setText(str(Ram.getRamUsed()))
         self.ui.textBrowserRamTotal.setText(str(Ram.getRamTotal()))
