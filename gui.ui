@@ -20,7 +20,7 @@
    <widget class="QScrollArea" name="scrollArea">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>50</x>
       <y>20</y>
       <width>431</width>
       <height>701</height>
@@ -87,8 +87,8 @@
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>50</y>
+        <x>30</x>
+        <y>20</y>
         <width>171</width>
         <height>131</height>
        </rect>
@@ -109,9 +109,6 @@
        </item>
        <item row="2" column="1">
         <widget class="QTextBrowser" name="textBrowserRamUsed"/>
-       </item>
-       <item row="1" column="1">
-        <widget class="QTextBrowser" name="textBrowserRamPercent"/>
        </item>
        <item row="2" column="0">
         <widget class="QLabel" name="label_4">
@@ -149,6 +146,85 @@
          </property>
          <property name="text">
           <string>Total</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QTextBrowser" name="textBrowserRamPercent"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="formLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>20</y>
+        <width>171</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <layout class="QFormLayout" name="formLayout_4">
+       <item row="2" column="1">
+        <widget class="QTextBrowser" name="textBrowserGpuLoad"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_12">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Load</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QTextBrowser" name="textBrowserGpuMemory"/>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_13">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Memory</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QTextBrowser" name="textBrowserGpuTemp"/>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_14">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Temperature</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QTextBrowser" name="textBrowserGpuName"/>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QLabel" name="label_11">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>GPU:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>

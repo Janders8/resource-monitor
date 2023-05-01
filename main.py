@@ -1,5 +1,6 @@
 from ram import Ram
 from cpu import Cpu
+from gpu import Gpu
 from gui import *
 import sys
 from PyQt5.QtWidgets import (
@@ -39,10 +40,18 @@ class Window(QMainWindow):
 
 
         # starting text
+        #cpu
         self.ui.textBrowserCpu.setText(str(Cpu.getFormatedThreadUsage()))
         self.ui.textBrowserRamPercent.setText(str(Ram.getRamPercentage()))
+        #ram
         self.ui.textBrowserRamUsed.setText(str(Ram.getRamUsed()))
         self.ui.textBrowserRamTotal.setText(str(Ram.getRamTotal()))
+        #gpu
+        #if gpu exist
+        self.ui.textBrowserGpuName.setText(str(Gpu.getGpuName()))
+        self.ui.textBrowserGpuLoad.setText(str(Gpu.getGpuLoad()))
+        self.ui.textBrowserGpuMemory.setText(str(Gpu.getGpuMemoryUsed()))
+        self.ui.textBrowserGpuTemp.setText(str(Gpu.getGpuTemp()))
 
         # timer
         self.timer = QTimer()
@@ -51,11 +60,17 @@ class Window(QMainWindow):
         self.timer.timeout.connect(self.update)
 
     def update(self):
-
+        #cpu
         self.ui.textBrowserCpu.setText(str(Cpu.getFormatedThreadUsage()))
         self.ui.textBrowserRamPercent.setText(str(Ram.getRamPercentage()))
+        #ram
         self.ui.textBrowserRamUsed.setText(str(Ram.getRamUsed()))
         self.ui.textBrowserRamTotal.setText(str(Ram.getRamTotal()))
+        #gpu
+        self.ui.textBrowserGpuName.setText(str(Gpu.getGpuName()))
+        self.ui.textBrowserGpuLoad.setText(str(Gpu.getGpuLoad()))
+        self.ui.textBrowserGpuMemory.setText(str(Gpu.getGpuMemoryUsed()))
+        self.ui.textBrowserGpuTemp.setText(str(Gpu.getGpuTemp()))
 
 df = Cpu.initiateMonitor()
 print(str(df.columns))
