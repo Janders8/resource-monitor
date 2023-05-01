@@ -11,7 +11,6 @@ from PyQt5.QtCore import QTimer
 
 
 
-df = Cpu.initiateMonitor()
 # while True:
 #
 #
@@ -62,12 +61,15 @@ class Window(QMainWindow):
 
         # updating display
         #cpu
-        cpuThread = Cpu.getThreadUsage()
-        cpuThreadFormated = Cpu.getFormatedThreadUsage(cpuThread)
+        # cpuThread = Cpu.getThreadUsage()
+        # cpuThreadFormated = Cpu.getFormatedThreadUsage(cpuThread)
+
+        cpuCore = Cpu.getCoreUsage()
+        cpuCoreFormated = Cpu.getFormatedCoreUsage(cpuCore)
         cpuTemp = Cpu.getCpusTemp()
 
 
-        self.ui.textBrowserCpu.setText(str(cpuThreadFormated))
+        self.ui.textBrowserCpu.setText(str(cpuCoreFormated))
         self.ui.textBrowserCpuTemp.setText(str(cpuTemp))
 
 
@@ -94,8 +96,6 @@ class Window(QMainWindow):
         if self.isLogging:
             self.csv.dfHeaders.drop(df.index,inplace=True)
 
-            # cpu
-            #print(cpuThread)
 
             newRow = cpuThread + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp]
             self.csv.dfHeaders.loc[len(df)] = newRow

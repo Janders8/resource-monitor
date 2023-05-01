@@ -5,7 +5,7 @@ import wmi
 class Cpu:
 
     @staticmethod
-    def initiateMonitor():
+    def initiateMonitorThreat():
         df = pd.DataFrame()
 
         # create df
@@ -16,6 +16,17 @@ class Cpu:
 
         return df
 
+    @staticmethod
+    def initiateMonitorCore():
+        df = pd.DataFrame()
+
+        # create df
+        for i in range(0, psutil.cpu_count(logical=False)):
+            df["Core_" + str(i) + " Load"] = None
+
+        df["cpuTemp"] = None
+
+        return df
 
     @staticmethod
     def getThreadUsage():
@@ -33,8 +44,41 @@ class Cpu:
         return result
 
     @staticmethod
+    def getFormatedCoreUsage(CoreUsage):
+        result = ""
+
+        for i, v in enumerate(CoreUsage):
+            result += "core_" + str(i) + " :" + str(v) + "\n"
+
+        return result
+
+    @staticmethod
     def getLogicalCpus():
         return psutil.cpu_count()
+
+    @staticmethod
+    def getCoreUsage():
+        print(cpu_usage_percent = psutil.cpu_percent(interval=0.5, percpu=True))
+
+    @staticmethod
+    def getCoreUsage():
+        # Get the usage of all cores (including hyper-threading cores)
+        all_core_usage_percent = psutil.cpu_percent(interval=0.5, percpu=True)
+
+        # Get the number of physical cores
+        num_physical_cores = psutil.cpu_count(logical=False)
+
+        # Group the usage of hyper-threading cores with their corresponding physical core
+        physical_core_usage_percent = []
+        for i in range(num_physical_cores):
+            core_usage = (all_core_usage_percent[i * 2] + all_core_usage_percent[i * 2 + 1]) / 2
+            physical_core_usage_percent.append(core_usage)
+
+
+        return physical_core_usage_percent
+        # Print the usage of each physical core
+        # for i in range(num_physical_cores):
+        #     print(f"Physical Core {i + 1} Usage: {physical_core_usage_percent[i]}%")
 
     @staticmethod
     def getCpusTemp():
@@ -54,6 +98,7 @@ class Cpu:
         except:
             return ""
 
+print(Cpu.getCoreUsage())
 
 #print (Cpu.getThreadUsage())
 # print(Cpu.getCpusTemp())

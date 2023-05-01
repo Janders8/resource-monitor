@@ -16,7 +16,7 @@ class CsvWriter(object):
         df = pd.DataFrame()
 
         #cpu
-        cpu = Cpu.initiateMonitor()
+        cpu = Cpu.initiateMonitorCore()
         #print(cpu)
         df = pd.concat([df, cpu])
         #ram
