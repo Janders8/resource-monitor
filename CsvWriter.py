@@ -4,7 +4,7 @@ from gpu import Gpu
 import pandas as pd
 
 class CsvWriter(object):
-    something = 1
+    fileName = "monitoring.csv"
 
     def __new__(cls):
         if not hasattr(cls, 'instance'):
@@ -13,7 +13,6 @@ class CsvWriter(object):
 
     def __init__(self):
         df = pd.DataFrame()
-
         ram = Ram.initiateMonitor()
         print(ram)
         df = pd.concat([df, ram])
@@ -21,10 +20,15 @@ class CsvWriter(object):
         print(cpu)
         df = pd.concat([df, cpu])
 
+        gpu = Gpu.initiateMonitor()
+        df = pd.concat([df, gpu])
 
+        #todo disk....
 
 
         print(df)
+
+        df.to_csv(CsvWriter.fileName, encoding='utf-8', index = False)
 
 
 if __name__ == "__main__":
