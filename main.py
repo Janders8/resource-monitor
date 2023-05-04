@@ -76,17 +76,17 @@ class MyThread(QThread):
 
 
             }
+            self.my_signal.emit(dict)
             end = time.time()
-            print(2 - (end-start))
+
+            print("time of geating measurments: ", end-start)
+            #update every two seconds
             time.sleep(2 - (end-start))
 
 
-            print("worker time: ", end - start)
-            self.my_signal.emit(dict)
 
 
 
-            #time.sleep(1)
 
 
 
@@ -109,8 +109,7 @@ class Window(QMainWindow):
         #     #textField.append(QTextBrowser(self.ui.formLayoutWidget))
         #     #self.ui.formLayout.addRow(labelList[i], textField[i])
 
-        # disk monitor
-        self.diskMonitor = Disk()
+
 
 
         # timer
@@ -126,6 +125,7 @@ class Window(QMainWindow):
         #logging
         self.isLogging = False
 
+        #measure threat
         self.my_thread = MyThread()
         self.my_thread.my_signal.connect(self.update)
         self.my_thread.start()
@@ -191,8 +191,13 @@ class Window(QMainWindow):
             #empty dataframe with headers
             self.csv.dfHeaders.drop(self.csv.dfHeaders.index,inplace=True)
 
+            print(diskRead)
+            print(diskWrite)
+            print(diskTotal)
+
             # create new row
-            newRow = cpuCore + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp]
+            newRow = cpuCore + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp] \
+                            + [diskRead] + [diskWrite] + [diskTotal]
             #add new row
             self.csv.dfHeaders.loc[len(self.csv.dfHeaders)] = newRow
 
@@ -202,7 +207,7 @@ class Window(QMainWindow):
             self.csv.dfHeaders.to_csv(self.csv.fileName, mode="a", index=False, header = False)
 
         end = time.time()
-        print("update: " , end-start)
+        print("gui update time: " , end-start)
 
 
 

@@ -1,6 +1,7 @@
 from ram import Ram
 from cpu import Cpu
 from gpu import Gpu
+from disk import Disk
 import pandas as pd
 
 class CsvWriter(object):
@@ -28,7 +29,9 @@ class CsvWriter(object):
         gpu = Gpu.initiateMonitor()
         df = pd.concat([df, gpu])
 
-        #todo disk....
+        #disk
+        disk = Disk.initiateMonitorDisk()
+        df = pd.concat([df, disk])
 
 
         #create file with headers
