@@ -3,6 +3,14 @@ import time
 
 
 class Disk:
+
+
+    def __init__(self):
+        startingValues = psutil.disk_io_counters()
+
+        self.oldRead = startingValues.read_count
+        self.oldWrite = startingValues.write_count
+
     @staticmethod
     def disk_activity():
         disk_io_counters1 = psutil.disk_io_counters()
@@ -51,22 +59,31 @@ class Disk:
         return bytes_diff / total_bytes * 100
 
     @staticmethod
-    def diskIOpercentage():
+    def diskIOSpeed():
         disk_io_before = psutil.disk_io_counters()
-        time.sleep(0.5)  # Wait for 1 second
+        time.sleep(1)  # Wait for 1 second
         disk_io_after = psutil.disk_io_counters()
 
+        # converting valuest to get MB/s
+        readBytes = round((disk_io_after.read_bytes - disk_io_before.read_bytes) / 1024 / 1024, 2)
+        writeBytes = round ( (disk_io_after.write_bytes - disk_io_before.write_bytes) / 1024 / 1024, 2)
+
+    # def diskIOSpeed(self):
+    #     new = psutil.disk_io_counters()
+    #     newRead = new.read_bytes
+    #     newWrite = new.write_bytes
+    #
+    #     total = newRead + newWrite
+    #
+    #     return newRead, newWrite, total
+
+        #print(readBytes, writeBytes)
 
 
-
-        readBytes = disk_io_after.read_bytes - disk_io_before.read_bytes
-        writeBytes = disk_io_after.write_bytes - disk_io_before.write_bytes
-
-        print(readBytes, writeBytes)
 
         totalBytes = readBytes+writeBytes
 
-        return totalBytes
+        return readBytes, writeBytes, totalBytes
 
 
 
@@ -87,8 +104,8 @@ class Disk:
 
         return(disk_usage_process / disk_total * 100)
 
-while True:
-    print(Disk.diskIOpercentage())
+# while True:
+#     print(Disk.diskISpeed())
 #
 # p = psutil.Process()
 # io_counters = p.io_counters()

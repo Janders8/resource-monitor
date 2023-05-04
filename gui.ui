@@ -179,7 +179,7 @@
           <x>240</x>
           <y>20</y>
           <width>171</width>
-          <height>161</height>
+          <height>151</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="formLayoutGpu">
@@ -281,7 +281,7 @@
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>Read Activity</string>
+            <string>Read speed</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -289,7 +289,7 @@
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QTextBrowser" name="textBrowserDiskReadActivity"/>
+          <widget class="QTextBrowser" name="textBrowserDiskReadSpeed"/>
          </item>
          <item row="3" column="0">
           <widget class="QLabel" name="label_16">
@@ -297,7 +297,7 @@
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>Write Activity</string>
+            <string>Write speed</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -305,7 +305,7 @@
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QTextBrowser" name="textBrowserDiskWriteActivity"/>
+          <widget class="QTextBrowser" name="textBrowserDiskWriteSpeed"/>
          </item>
          <item row="4" column="0">
           <widget class="QLabel" name="label_17">
@@ -313,7 +313,7 @@
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>Total activity</string>
+            <string>Total speed</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -321,7 +321,7 @@
           </widget>
          </item>
          <item row="4" column="1">
-          <widget class="QTextBrowser" name="textBrowserDiskTotalActivity"/>
+          <widget class="QTextBrowser" name="textBrowserDiskTotalSpeed"/>
          </item>
          <item row="0" column="0" colspan="2">
           <widget class="QLabel" name="label_18">

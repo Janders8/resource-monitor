@@ -34,10 +34,3 @@ class CsvWriter(object):
         #create file with headers
         self.dfHeaders = df
         self.dfHeaders.to_csv(CsvWriter.fileName, encoding='utf-8', index = False)
-
-
-
-
-if __name__ == "__main__":
-    one = CsvWriter()
-    two = CsvWriter()
