@@ -37,3 +37,43 @@ class CsvWriter(object):
         #create file with headers
         self.dfHeaders = df
         self.dfHeaders.to_csv(CsvWriter.fileName, encoding='utf-8', index = False)
+
+    def update(self, values):
+        #cpu
+        cpuCore = values["cpuCore"]
+        cpuCoreFormated = values["cpuCoreFormated"]
+        cpuTemp = values["cpuTemp"]
+
+        # ram
+        ramPercent = values["ramPercent"]
+        ramUsed = values["ramUsed"]
+        ramTotal = values["ramTotal"]
+
+        # gpu
+        gpuLoad = values["gpuLoad"]
+        gpuMemory = values["gpuMemory"]
+        gpuTemp = values["gpuTemp"]
+
+        #disk
+        diskRead = values["diskRead"]
+        diskWrite = values["diskWrite"]
+        diskTotal = values["diskTotal"]
+
+
+        # empty dataframe with headers
+        self.dfHeaders.drop(self.dfHeaders.index, inplace=True)
+
+        print(diskRead)
+        print(diskWrite)
+        print(diskTotal)
+
+        # create new row
+        newRow = cpuCore + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp] \
+                 + [diskRead] + [diskWrite] + [diskTotal]
+        # add new row
+        self.dfHeaders.loc[len(self.dfHeaders)] = newRow
+
+        print(self.dfHeaders)
+
+        # save new row
+        self.dfHeaders.to_csv(self.fileName, mode="a", index=False, header=False)

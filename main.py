@@ -11,18 +11,8 @@ import sys
 from PyQt5.QtWidgets import (
     QApplication, QDialog, QMainWindow, QMessageBox, QLabel, QTextBrowser
 )
-from PyQt5.QtCore import QTimer, QThread, pyqtSignal
+from PyQt5.QtCore import pyqtSignal
 
-
-
-
-
-# while True:
-#
-#
-#     df.loc[len(df)] = Cpu.getThreadUsage()
-#
-#     print(df)
 
 from PyQt5.QtCore import QThread
 
@@ -81,15 +71,10 @@ class MyThread(QThread):
 
             print("time of geating measurments: ", end-start)
             #update every two seconds
-            time.sleep(2 - (end-start))
-
-
-
-
-
-
-
-
+            try:
+                time.sleep(2 - (end-start))
+            except:
+                pass
 
 
 class Window(QMainWindow):
@@ -134,9 +119,6 @@ class Window(QMainWindow):
     def update(self, values = {}):
 
         start = time.time()
-
-
-
 
         # updating display
         #cpu
@@ -188,23 +170,7 @@ class Window(QMainWindow):
 
         # if logging is enabled
         if self.isLogging:
-            #empty dataframe with headers
-            self.csv.dfHeaders.drop(self.csv.dfHeaders.index,inplace=True)
-
-            print(diskRead)
-            print(diskWrite)
-            print(diskTotal)
-
-            # create new row
-            newRow = cpuCore + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp] \
-                            + [diskRead] + [diskWrite] + [diskTotal]
-            #add new row
-            self.csv.dfHeaders.loc[len(self.csv.dfHeaders)] = newRow
-
-            print(self.csv.dfHeaders)
-
-            # save new row
-            self.csv.dfHeaders.to_csv(self.csv.fileName, mode="a", index=False, header = False)
+            self.csv.update(values)
 
         end = time.time()
         print("gui update time: " , end-start)
