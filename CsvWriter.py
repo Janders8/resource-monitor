@@ -40,8 +40,10 @@ class CsvWriter(object):
 
     def update(self, values):
         #cpu
-        cpuCore = values["cpuCore"]
-        cpuCoreFormated = values["cpuCoreFormated"]
+        # cpuCore = values["cpuCore"]
+        # cpuCoreFormated = values["cpuCoreFormated"]
+        cpuThread = values["cpuThread"]
+        cpuThreadFormated = values["cpuThreadFormated"]
         cpuTemp = values["cpuTemp"]
 
         # ram
@@ -68,7 +70,7 @@ class CsvWriter(object):
         print(diskTotal)
 
         # create new row
-        newRow = cpuCore + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp] \
+        newRow = cpuThread + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp] \
                  + [diskRead] + [diskWrite] + [diskTotal]
         # add new row
         self.dfHeaders.loc[len(self.dfHeaders)] = newRow

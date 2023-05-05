@@ -93,6 +93,7 @@ class Cpu:
         computer.CPUEnabled = True
         computer.Open()
         for hardware in computer.Hardware:
+
             if hardware.HardwareType == HardwareType.CPU:
                 hardware.Update()
                 for sensor in hardware.Sensors:

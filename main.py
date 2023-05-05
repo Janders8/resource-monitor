@@ -25,31 +25,45 @@ class MyThread(QThread):
 
         while True:
             start = time.time()
-            # cpu
-            cpuCore = Cpu.getCoreUsage()
-            cpuCoreFormated = Cpu.getFormatedCoreUsage(cpuCore)
+            # cpu cores
+            # cpuCore = Cpu.getCoreUsage()
+            # cpuCoreFormated = Cpu.getFormatedCoreUsage(cpuCore)
+            # cpuTemp = Cpu.getCpusTemp()
+            # print("cpu time: ", time.time() - start)
+
+            cpuThread = Cpu.getThreadUsage()
+            cpuThreadFormated = Cpu.getFormatedThreadUsage(cpuThread)
             cpuTemp = Cpu.getCpusTemp()
 
+            print("cpu time: ", time.time() - start)
 
 
             # ram
+            startRam = time.time()
             ramPercent = Ram.getRamPercentage()
             ramUsed = Ram.getRamUsed()
             ramTotal = Ram.getRamTotal()
+            print("ram time: ", time.time() - startRam)
 
             # gpu
+            startGpu = time.time()
             gpuLoad = Gpu.getGpuLoad()
             gpuMemory = Gpu.getGpuMemoryUsed()
             gpuTemp = Gpu.getGpuTemp()
+            print("gpu time: ", time.time() - startGpu)
 
 
 
             # disk speed in MB/s
+            startDisk = time.time()
             diskRead, diskWrite, diskTotal = Disk.diskIOSpeed()
+            print("disk time: ", time.time() - startDisk)
 
             dict = {
-                "cpuCore" : cpuCore,
-                "cpuCoreFormated" : cpuCoreFormated,
+                # "cpuCore" : cpuCore,
+                # "cpuCoreFormated" : cpuCoreFormated,
+                "cpuThread" : cpuThread,
+                "cpuThreadFromated" : cpuThreadFormated,
                 "cpuTemp" : cpuTemp,
 
                 "ramPercent" : ramPercent,
@@ -126,12 +140,16 @@ class Window(QMainWindow):
         # cpuThreadFormated = Cpu.getFormatedThreadUsage(cpuThread)
 
 
-        cpuCore = values["cpuCore"]
-        cpuCoreFormated = values["cpuCoreFormated"]
+        # cpuCore = values["cpuCore"]
+        # cpuCoreFormated = values["cpuCoreFormated"]
+
+        cpuThread = values["cpuThread"]
+        cpuThreadFomrated = values["cpuThreadFromated"]
+
         cpuTemp = values["cpuTemp"]
 
 
-        self.ui.textBrowserCpu.setText(str(cpuCoreFormated))
+        self.ui.textBrowserCpu.setText(str(cpuThreadFomrated))
         self.ui.textBrowserCpuTemp.setText(str(cpuTemp))
 
 
