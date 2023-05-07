@@ -17,7 +17,7 @@ class CsvWriter(object):
         df = pd.DataFrame()
 
         #cpu
-        cpu = Cpu.initiateMonitorCore()
+        cpu = Cpu.initiateMonitorThreat()
         #print(cpu)
         df = pd.concat([df, cpu])
         #ram
@@ -65,13 +65,10 @@ class CsvWriter(object):
         # empty dataframe with headers
         self.dfHeaders.drop(self.dfHeaders.index, inplace=True)
 
-        print(diskRead)
-        print(diskWrite)
-        print(diskTotal)
-
         # create new row
         newRow = cpuThread + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp] \
                  + [diskRead] + [diskWrite] + [diskTotal]
+
         # add new row
         self.dfHeaders.loc[len(self.dfHeaders)] = newRow
 

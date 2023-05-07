@@ -63,7 +63,7 @@ class MyThread(QThread):
                 # "cpuCore" : cpuCore,
                 # "cpuCoreFormated" : cpuCoreFormated,
                 "cpuThread" : cpuThread,
-                "cpuThreadFromated" : cpuThreadFormated,
+                "cpuThreadFormated" : cpuThreadFormated,
                 "cpuTemp" : cpuTemp,
 
                 "ramPercent" : ramPercent,
@@ -144,12 +144,12 @@ class Window(QMainWindow):
         # cpuCoreFormated = values["cpuCoreFormated"]
 
         cpuThread = values["cpuThread"]
-        cpuThreadFomrated = values["cpuThreadFromated"]
+        cpuThreadFormated = values["cpuThreadFormated"]
 
         cpuTemp = values["cpuTemp"]
 
 
-        self.ui.textBrowserCpu.setText(str(cpuThreadFomrated))
+        self.ui.textBrowserCpu.setText(str(cpuThreadFormated))
         self.ui.textBrowserCpuTemp.setText(str(cpuTemp))
 
 
