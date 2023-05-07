@@ -23,6 +23,7 @@ class Disk:
         df["Disk write speed"] = None
         df["Disk total speed"] = None
         df["Disk wait time"] = None
+        df["Disk queue"] = None
 
         return df
 
@@ -51,7 +52,8 @@ class Disk:
         diskWrite = round(int(disks.DiskWriteBytesPersec)  / 1024/ 1024, 2)
         diskTotal = round(int(disks.DiskBytesPersec)       / 1024/ 1024,2)
         diskWatiTime = disks.AvgDiskSecPerTransfer * 1000
-        return diskRead, diskWrite, diskTotal, diskWatiTime
+        diskQueue = disks.CurrentDiskQueueLength
+        return diskRead, diskWrite, diskTotal, diskWatiTime, diskQueue
 
     @staticmethod
     def getDiskMany():
