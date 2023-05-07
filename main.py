@@ -74,7 +74,7 @@ class MyThread(QThread):
             # disk speed in MB/s
             startDisk = time.time()
             #diskRead, diskWrite, diskTotal = Disk.diskIOSpeed()
-            diskRead, diskWrite, diskTotal, diskWaitTime = Disk.diskIOSpeedV2()
+            diskRead, diskWrite, diskTotal, diskWaitTime = Disk.diskInfo()
             print("disk time: ", time.time() - startDisk)
 
             dict = {

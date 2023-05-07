@@ -41,7 +41,7 @@ class Disk:
         return readBytes, writeBytes, totalBytes
 
     @staticmethod
-    def diskIOSpeedV2():
+    def diskInfo():
         wmi_obj = wmi.WMI()
         disks = wmi_obj.Win32_PerfFormattedData_PerfDisk_PhysicalDisk()[0]
 
@@ -74,7 +74,7 @@ class Disk:
 
         #print("Czas oczekiwania na dane z dysku twardego:", wait_time, "ms")
 
-print(Disk.diskIOSpeedV2())
+
 #print(Disk.disk_wait_time())
 
 # while True:
