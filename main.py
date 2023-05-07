@@ -50,6 +50,7 @@ class MyThread(QThread):
             cpuThread = Cpu.getThreadUsage()
             cpuThreadFormated = Cpu.getFormatedThreadUsage(cpuThread)
             cpuTemp = Cpu.getCpusTemp()
+            cpuErrors = Cpu.getCpuErrors()
 
             print("cpu time: ", time.time() - start)
 
@@ -72,16 +73,17 @@ class MyThread(QThread):
 
             # disk speed in MB/s
             startDisk = time.time()
-            diskRead, diskWrite, diskTotal = Disk.diskIOSpeed()
+            #diskRead, diskWrite, diskTotal = Disk.diskIOSpeed()
+            diskRead, diskWrite, diskTotal, diskWaitTime = Disk.diskIOSpeedV2()
             print("disk time: ", time.time() - startDisk)
 
-            diskWaitTime = Disk.diskWaitTime()
             dict = {
                 # "cpuCore" : cpuCore,
                 # "cpuCoreFormated" : cpuCoreFormated,
                 "cpuThread" : cpuThread,
                 "cpuThreadFormated" : cpuThreadFormated,
                 "cpuTemp" : cpuTemp,
+                "cpuErrors" : cpuErrors,
 
                 "ramPercent" : ramPercent,
                 "ramUsed" : ramUsed,
@@ -163,12 +165,13 @@ class Window(QMainWindow):
 
         cpuThread = values["cpuThread"]
         cpuThreadFormated = values["cpuThreadFormated"]
-
         cpuTemp = values["cpuTemp"]
+        cpuErrors = values["cpuErrors"]
 
 
         self.ui.textBrowserCpu.setText(str(cpuThreadFormated))
         self.ui.textBrowserCpuTemp.setText(str(cpuTemp))
+        self.ui.textBrowserCpuErrors.setText(str(cpuErrors))
 
 
         #ram

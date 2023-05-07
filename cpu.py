@@ -1,6 +1,7 @@
 import psutil
 import pandas as pd
 import wmi
+import time
 import clr
 clr.AddReference("OpenHardwareMonitorLib")
 from OpenHardwareMonitor.Hardware import *
@@ -9,6 +10,8 @@ class Cpu:
     computer = Computer()
     computer.CPUEnabled = True
     computer.Open()
+
+    _oldErrors = 0
 
     @staticmethod
     def initiateMonitorThreat():
@@ -19,8 +22,26 @@ class Cpu:
             df["thread_" + str(i) + " Load"] = None
 
         df["cpuTemp"] = None
+        df["cpuErrors"] = None
 
         return df
+
+    @staticmethod
+    #todo
+    def getCpuErrors():
+        cpu_stats = psutil.cpu_stats()
+        # Ilość przełączeń kontekstu procesora
+        ctx_switches = cpu_stats.ctx_switches
+        # Ilość przerwań obsługiwanych przez procesor
+        interrupts = cpu_stats.interrupts
+        # Obliczenie liczby błędów procesora jako suma przełączeń kontekstu i przerwań
+        newErrors = ctx_switches + interrupts
+
+        result = newErrors - Cpu._oldErrors
+        Cpu._oldErrors = newErrors
+        return result
+
+
 
     @staticmethod
     def initiateMonitorCore():
@@ -100,8 +121,14 @@ class Cpu:
                 for sensor in hardware.Sensors:
                     if sensor.SensorType == SensorType.Temperature and sensor.Name == "CPU Package":
                         return sensor.Value
-
-print(Cpu.getCpusTemp())
+# prev = Cpu.getCpuErrors()
+# while True:
+#     new = Cpu.getCpuErrors()
+#     print(new-prev)
+#     prev = new
+#     time.sleep(1)
+#
+# print(Cpu.getCpuErrors())
 #print(Cpu.getCoreUsage())
 
 #print (Cpu.getThreadUsage())

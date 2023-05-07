@@ -45,6 +45,7 @@ class CsvWriter(object):
         cpuThread = values["cpuThread"]
         cpuThreadFormated = values["cpuThreadFormated"]
         cpuTemp = values["cpuTemp"]
+        cpuErrors = values["cpuErrors"]
 
         # ram
         ramPercent = values["ramPercent"]
@@ -67,7 +68,7 @@ class CsvWriter(object):
         self.dfHeaders.drop(self.dfHeaders.index, inplace=True)
 
         # create new row
-        newRow = cpuThread + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp] \
+        newRow = cpuThread + [cpuTemp] + [cpuErrors] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp] \
                  + [diskRead] + [diskWrite] + [diskTotal] + [diskWait]
 
         # add new row

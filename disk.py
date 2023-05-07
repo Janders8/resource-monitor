@@ -14,6 +14,7 @@ class Disk:
     #     self.oldRead = startingValues.read_count
     #     self.oldWrite = startingValues.write_count
 
+    wmi_obj = wmi.WMI()
 
     @staticmethod
     def initiateMonitorDisk():
@@ -40,11 +41,32 @@ class Disk:
         return readBytes, writeBytes, totalBytes
 
     @staticmethod
+    def diskIOSpeedV2():
+        wmi_obj = wmi.WMI()
+        disks = wmi_obj.Win32_PerfFormattedData_PerfDisk_PhysicalDisk()[0]
+
+
+
+        diskRead = round(int(disks.DiskReadBytesPersec)    / 1024/ 1024, 2)
+        diskWrite = round(int(disks.DiskWriteBytesPersec)  / 1024/ 1024, 2)
+        diskTotal = round(int(disks.DiskBytesPersec)       / 1024/ 1024,2)
+        diskWatiTime = disks.AvgDiskSecPerTransfer * 1000
+        return diskRead, diskWrite, diskTotal, diskWatiTime
+
+    @staticmethod
+    def getDiskMany():
+        disk_errors = Disk.wmi_obj.query("SELECT * FROM Win32_PerfFormattedData_PerfDisk_PhysicalDisk")
+
+        for disk in disk_errors:
+            return disk.PercentIdleTime
+
+    @staticmethod
     def diskWaitTime():
         # Tworzenie obiektu WMI i pobieranie informacji o dysku
         wmi_obj = wmi.WMI()
         disk = wmi_obj.Win32_PerfFormattedData_PerfDisk_PhysicalDisk()[0]
 
+        print(disk)
         # Obliczanie czasu oczekiwania na dane z dysku twardego
         waitTime = disk.AvgDiskSecPerTransfer * 1000
 
@@ -52,6 +74,14 @@ class Disk:
 
         #print("Czas oczekiwania na dane z dysku twardego:", wait_time, "ms")
 
+print(Disk.diskIOSpeedV2())
 #print(Disk.disk_wait_time())
 
-
+# while True:
+#     start = time.time()
+#     res = Disk.getDiskMany()
+#
+#     print(res)
+#     print(time.time() - start)
+#
+#     time.sleep(1)
