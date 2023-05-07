@@ -59,6 +59,7 @@ class MyThread(QThread):
             diskRead, diskWrite, diskTotal = Disk.diskIOSpeed()
             print("disk time: ", time.time() - startDisk)
 
+            diskWaitTime = Disk.diskWaitTime()
             dict = {
                 # "cpuCore" : cpuCore,
                 # "cpuCoreFormated" : cpuCoreFormated,
@@ -76,7 +77,8 @@ class MyThread(QThread):
 
                 "diskRead" : diskRead,
                 "diskWrite" : diskWrite,
-                "diskTotal" : diskTotal
+                "diskTotal" : diskTotal,
+                "diskWaitTime" : diskWaitTime
 
 
             }
@@ -179,10 +181,12 @@ class Window(QMainWindow):
         diskRead = values["diskRead"]
         diskWrite = values["diskWrite"]
         diskTotal = values["diskTotal"]
+        diskWait = values["diskWaitTime"]
 
         self.ui.textBrowserDiskReadSpeed.setText(str(diskRead))
         self.ui.textBrowserDiskWriteSpeed.setText(str(diskWrite))
         self.ui.textBrowserDiskTotalSpeed.setText(str(diskTotal))
+        self.ui.textBrowserDiskWaitTime.setText(str(diskWait))
 
 
 

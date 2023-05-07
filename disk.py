@@ -1,6 +1,9 @@
 import psutil
 import time
 import pandas as pd
+import wmi
+
+
 
 class Disk:
 
@@ -18,6 +21,7 @@ class Disk:
         df["Disk read speed"] = None
         df["Disk write speed"] = None
         df["Disk total speed"] = None
+        df["Disk wait time"] = None
 
         return df
 
@@ -34,5 +38,20 @@ class Disk:
         totalBytes = readBytes+writeBytes
 
         return readBytes, writeBytes, totalBytes
+
+    @staticmethod
+    def diskWaitTime():
+        # Tworzenie obiektu WMI i pobieranie informacji o dysku
+        wmi_obj = wmi.WMI()
+        disk = wmi_obj.Win32_PerfFormattedData_PerfDisk_PhysicalDisk()[0]
+
+        # Obliczanie czasu oczekiwania na dane z dysku twardego
+        waitTime = disk.AvgDiskSecPerTransfer * 1000
+
+        return(waitTime)
+
+        #print("Czas oczekiwania na dane z dysku twardego:", wait_time, "ms")
+
+#print(Disk.disk_wait_time())
 
 

@@ -60,6 +60,7 @@ class CsvWriter(object):
         diskRead = values["diskRead"]
         diskWrite = values["diskWrite"]
         diskTotal = values["diskTotal"]
+        diskWait = values["diskWaitTime"]
 
 
         # empty dataframe with headers
@@ -67,7 +68,7 @@ class CsvWriter(object):
 
         # create new row
         newRow = cpuThread + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp] \
-                 + [diskRead] + [diskWrite] + [diskTotal]
+                 + [diskRead] + [diskWrite] + [diskTotal] + [diskWait]
 
         # add new row
         self.dfHeaders.loc[len(self.dfHeaders)] = newRow
