@@ -6,6 +6,9 @@ clr.AddReference("OpenHardwareMonitorLib")
 from OpenHardwareMonitor.Hardware import *
 
 class Cpu:
+    computer = Computer()
+    computer.CPUEnabled = True
+    computer.Open()
 
     @staticmethod
     def initiateMonitorThreat():
@@ -89,10 +92,8 @@ class Cpu:
 
     @staticmethod
     def getCpusTemp():
-        computer = Computer()
-        computer.CPUEnabled = True
-        computer.Open()
-        for hardware in computer.Hardware:
+
+        for hardware in Cpu.computer.Hardware:
 
             if hardware.HardwareType == HardwareType.CPU:
                 hardware.Update()

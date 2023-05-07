@@ -1,5 +1,20 @@
-import pandas as pd
+# admin acces windows
+import ctypes, sys
+def is_admin():
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
+        return False
 
+if is_admin():
+    pass
+else:
+    # Re-run the program with admin rights
+    ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+    sys.exit(1)
+
+
+import pandas as pd
 from ram import Ram
 from cpu import Cpu
 from gpu import Gpu
@@ -15,6 +30,7 @@ from PyQt5.QtCore import pyqtSignal
 
 
 from PyQt5.QtCore import QThread
+
 
 class MyThread(QThread):
     my_signal = pyqtSignal(dict)
