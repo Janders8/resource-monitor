@@ -3,6 +3,7 @@ import pandas as pd
 import wmi
 import time
 import clr
+import wmi
 clr.AddReference("OpenHardwareMonitorLib")
 from OpenHardwareMonitor.Hardware import *
 
@@ -12,6 +13,9 @@ class Cpu:
     computer.Open()
 
     _oldErrors = 0
+
+
+
 
     @staticmethod
     def initiateMonitorThreat():
@@ -25,6 +29,15 @@ class Cpu:
         df["cpuErrors"] = None
 
         return df
+
+    # includes I/O waiting time
+    @staticmethod
+    def getCpuIdleTime():
+        cpu_count = psutil.cpu_count()
+        load_avg = psutil.getloadavg()
+
+        idleTime = max(0, (cpu_count * load_avg[0]) - psutil.cpu_count())
+        return idleTime
 
     @staticmethod
     #todo
@@ -121,6 +134,11 @@ class Cpu:
                 for sensor in hardware.Sensors:
                     if sensor.SensorType == SensorType.Temperature and sensor.Name == "CPU Package":
                         return sensor.Value
+i = 0
+while True:
+    i+=1
+    print(Cpu.getCpuIdleTime(),i)
+    time.sleep(1)
 # prev = Cpu.getCpuErrors()
 # while True:
 #     new = Cpu.getCpuErrors()
