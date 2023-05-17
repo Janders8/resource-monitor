@@ -24,6 +24,7 @@ class Disk:
         df["Disk total speed"] = None
         df["Disk wait time"] = None
         df["Disk queue"] = None
+        df["Disk usage"] = None
 
         return df
 
@@ -46,14 +47,13 @@ class Disk:
         wmi_obj = wmi.WMI()
         disks = wmi_obj.Win32_PerfFormattedData_PerfDisk_PhysicalDisk()[0]
 
-
-
         diskRead = round(int(disks.DiskReadBytesPersec)    / 1024/ 1024, 2)
         diskWrite = round(int(disks.DiskWriteBytesPersec)  / 1024/ 1024, 2)
         diskTotal = round(int(disks.DiskBytesPersec)       / 1024/ 1024,2)
         diskWatiTime = disks.AvgDiskSecPerTransfer * 1000
         diskQueue = disks.CurrentDiskQueueLength
-        return diskRead, diskWrite, diskTotal, diskWatiTime, diskQueue
+        diskUsage = 100 - int(disks.PercentIdleTime)
+        return diskRead, diskWrite, diskTotal, diskWatiTime, diskQueue, diskUsage
 
     @staticmethod
     def getDiskMany():
@@ -87,3 +87,5 @@ class Disk:
 #     print(time.time() - start)
 #
 #     time.sleep(1)
+
+#print(Disk.diskInfo())

@@ -74,7 +74,7 @@ class MyThread(QThread):
             # disk speed in MB/s
             startDisk = time.time()
             #diskRead, diskWrite, diskTotal = Disk.diskIOSpeed()
-            diskRead, diskWrite, diskTotal, diskWaitTime, diskQueue = Disk.diskInfo()
+            diskRead, diskWrite, diskTotal, diskWaitTime, diskQueue, diskUsage = Disk.diskInfo()
             print("disk time: ", time.time() - startDisk)
 
             dict = {
@@ -97,7 +97,8 @@ class MyThread(QThread):
                 "diskWrite" : diskWrite,
                 "diskTotal" : diskTotal,
                 "diskWaitTime" : diskWaitTime,
-                "diskQueue" : diskQueue
+                "diskQueue" : diskQueue,
+                "diskUsage" : diskUsage
 
 
             }
@@ -203,12 +204,14 @@ class Window(QMainWindow):
         diskTotal = values["diskTotal"]
         diskWait = values["diskWaitTime"]
         diskQueue = values["diskQueue"]
+        diskUsage = values["diskUsage"]
 
         self.ui.textBrowserDiskReadSpeed.setText(str(diskRead))
         self.ui.textBrowserDiskWriteSpeed.setText(str(diskWrite))
         self.ui.textBrowserDiskTotalSpeed.setText(str(diskTotal))
         self.ui.textBrowserDiskWaitTime.setText(str(diskWait))
         self.ui.textBrowserDiskQueue.setText(str(diskQueue))
+        self.ui.textBrowserDiskUsage.setText(str(diskUsage))
 
 
 

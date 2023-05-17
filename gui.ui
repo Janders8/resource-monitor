@@ -227,23 +227,39 @@
          <string/>
         </property>
         <layout class="QGridLayout" name="gridLayout_3">
-         <item row="1" column="1">
-          <widget class="QTextBrowser" name="textBrowserDiskReadSpeed"/>
+         <item row="3" column="1">
+          <widget class="QTextBrowser" name="textBrowserDiskWriteSpeed"/>
          </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="label_17">
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_20">
            <property name="autoFillBackground">
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>Total speed [MB/s]</string>
+            <string>Disk queue</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
            </property>
           </widget>
          </item>
-         <item row="4" column="0">
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_15">
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Read speed [MB/s]</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QTextBrowser" name="textBrowserDiskQueue"/>
+         </item>
+         <item row="5" column="0">
           <widget class="QLabel" name="label_19">
            <property name="autoFillBackground">
             <bool>false</bool>
@@ -257,7 +273,7 @@
           </widget>
          </item>
          <item row="4" column="1">
-          <widget class="QTextBrowser" name="textBrowserDiskWaitTime"/>
+          <widget class="QTextBrowser" name="textBrowserDiskTotalSpeed"/>
          </item>
          <item row="0" column="0" colspan="2">
           <widget class="QLabel" name="label_18">
@@ -272,13 +288,10 @@
            </property>
           </widget>
          </item>
-         <item row="3" column="1">
-          <widget class="QTextBrowser" name="textBrowserDiskTotalSpeed"/>
+         <item row="5" column="1">
+          <widget class="QTextBrowser" name="textBrowserDiskWaitTime"/>
          </item>
-         <item row="2" column="1">
-          <widget class="QTextBrowser" name="textBrowserDiskWriteSpeed"/>
-         </item>
-         <item row="2" column="0">
+         <item row="3" column="0">
           <widget class="QLabel" name="label_16">
            <property name="autoFillBackground">
             <bool>false</bool>
@@ -291,34 +304,37 @@
            </property>
           </widget>
          </item>
+         <item row="2" column="1">
+          <widget class="QTextBrowser" name="textBrowserDiskReadSpeed"/>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_17">
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Total speed [MB/s]</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
          <item row="1" column="0">
-          <widget class="QLabel" name="label_15">
+          <widget class="QLabel" name="label_21">
            <property name="autoFillBackground">
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>Read speed [MB/s]</string>
+            <string>Disk usage [%]</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
            </property>
           </widget>
          </item>
-         <item row="5" column="1">
-          <widget class="QTextBrowser" name="textBrowserDiskQueue"/>
-         </item>
-         <item row="5" column="0">
-          <widget class="QLabel" name="label_20">
-           <property name="autoFillBackground">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>Disk queue</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
+         <item row="1" column="1">
+          <widget class="QTextBrowser" name="textBrowserDiskUsage"/>
          </item>
         </layout>
        </widget>
