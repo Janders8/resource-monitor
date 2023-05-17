@@ -96,7 +96,7 @@
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>Total [GB</string>
+            <string>Total [GB]</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -113,7 +113,7 @@
          <rect>
           <x>10</x>
           <y>270</y>
-          <width>201</width>
+          <width>221</width>
           <height>431</height>
          </rect>
         </property>
@@ -144,16 +144,6 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="label">
-           <property name="text">
-            <string>CPU:</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
          <item row="3" column="1">
           <widget class="QTextBrowser" name="textBrowserCpuTemp">
            <property name="enabled">
@@ -179,7 +169,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label_3">
            <property name="text">
-            <string>Cores [%]</string>
+            <string>Threats [%]</string>
            </property>
           </widget>
          </item>
@@ -212,14 +202,24 @@
            </property>
           </widget>
          </item>
+         <item row="0" column="0" colspan="2">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>CPU:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
        <widget class="QGroupBox" name="groupBox_3">
         <property name="geometry">
          <rect>
-          <x>220</x>
+          <x>240</x>
           <y>290</y>
-          <width>251</width>
+          <width>231</width>
           <height>241</height>
          </rect>
         </property>

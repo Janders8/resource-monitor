@@ -50,7 +50,7 @@ class MyThread(QThread):
             cpuThread = Cpu.getThreadUsage()
             cpuThreadFormated = Cpu.getFormatedThreadUsage(cpuThread)
             cpuTemp = Cpu.getCpusTemp()
-            cpuErrors = Cpu.getCpuErrors()
+            #cpuErrors = Cpu.getCpuErrors()
 
             print("cpu time: ", time.time() - start)
 
@@ -83,7 +83,7 @@ class MyThread(QThread):
                 "cpuThread" : cpuThread,
                 "cpuThreadFormated" : cpuThreadFormated,
                 "cpuTemp" : cpuTemp,
-                "cpuErrors" : cpuErrors,
+                #"cpuErrors" : cpuErrors,
 
                 "ramPercent" : ramPercent,
                 "ramUsed" : ramUsed,
@@ -167,12 +167,12 @@ class Window(QMainWindow):
         cpuThread = values["cpuThread"]
         cpuThreadFormated = values["cpuThreadFormated"]
         cpuTemp = values["cpuTemp"]
-        cpuErrors = values["cpuErrors"]
+        #cpuErrors = values["cpuErrors"]
 
 
         self.ui.textBrowserCpu.setText(str(cpuThreadFormated))
         self.ui.textBrowserCpuTemp.setText(str(cpuTemp))
-        self.ui.textBrowserCpuErrors.setText(str(cpuErrors))
+        #self.ui.textBrowserCpuErrors.setText(str(cpuErrors))
 
 
         #ram

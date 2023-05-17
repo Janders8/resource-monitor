@@ -27,7 +27,7 @@ class Cpu:
             df["thread_" + str(i) + " Load"] = None
 
         df["cpuTemp"] = None
-        df["cpuErrors"] = None
+        #df["cpuErrors"] = None
 
         return df
 
@@ -144,7 +144,8 @@ class Cpu:
                     if sensor.SensorType == SensorType.Temperature and sensor.Name == "CPU Package":
                         return sensor.Value
 
-print(Cpu.getCpuIdleTime())
+
+
 # i = 0
 # while True:
 #     i+=1
