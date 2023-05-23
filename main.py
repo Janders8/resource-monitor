@@ -151,6 +151,9 @@ class Window(QMainWindow):
         self.my_thread.my_signal.connect(self.update)
         self.my_thread.start()
 
+        #initial values
+        self.ui.textBrowserGpuName.setText(str(Gpu.getGpuName()))
+        self.ui.textBrowserDiskModel.setText(str(Disk.get_hard_drive_model()))
 
     def update(self, values = {}):
 
@@ -190,7 +193,7 @@ class Window(QMainWindow):
         gpuMemory = values["gpuMemory"]
         gpuTemp = values["gpuTemp"]
 
-        self.ui.textBrowserGpuName.setText(str(Gpu.getGpuName()))
+
         self.ui.textBrowserGpuLoad.setText(str(gpuLoad))
         self.ui.textBrowserGpuMemory.setText(str(gpuMemory))
         self.ui.textBrowserGpuTemp.setText(str(gpuTemp))

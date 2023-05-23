@@ -73,6 +73,13 @@ class Disk:
         waitTime = disk.AvgDiskSecPerTransfer * 1000
 
         return(waitTime)
+    @staticmethod
+    def get_hard_drive_model():
+        c = wmi.WMI()
+        for drive in c.Win32_DiskDrive():
+            return drive.Model
+
+        return "no disc detected"
 
         #print("Czas oczekiwania na dane z dysku twardego:", wait_time, "ms")
 
