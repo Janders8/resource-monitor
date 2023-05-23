@@ -18,6 +18,9 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGroupBox" name="groupBox_5">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -30,6 +33,12 @@
      <size>
       <width>450</width>
       <height>450</height>
+     </size>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
      </size>
     </property>
     <property name="title">
@@ -308,120 +317,221 @@
      <property name="title">
       <string/>
      </property>
-     <layout class="QGridLayout" name="gridLayout_3">
-      <item row="5" column="1">
-       <widget class="QTextBrowser" name="textBrowserDiskTotalSpeed"/>
-      </item>
-      <item row="7" column="1">
-       <widget class="QTextBrowser" name="textBrowserDiskQueue"/>
-      </item>
-      <item row="2" column="1">
-       <widget class="QTextBrowser" name="textBrowserDiskUsage"/>
-      </item>
-      <item row="0" column="0" colspan="2">
-       <widget class="QLabel" name="label_18">
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>Disk</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="1">
-       <widget class="QTextBrowser" name="textBrowserDiskWaitTime"/>
-      </item>
-      <item row="3" column="1">
-       <widget class="QTextBrowser" name="textBrowserDiskReadSpeed"/>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_15">
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>Read speed [MB/s]</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_16">
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>Write speed [MB/s]</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="label_20">
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>Disk queue</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="label_19">
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>Wait Time [ms]</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_17">
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>Total speed [MB/s]</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_21">
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>Disk usage [%]</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QTextBrowser" name="textBrowserDiskWriteSpeed"/>
-      </item>
-      <item row="1" column="0" colspan="2">
-       <widget class="QTextBrowser" name="textBrowserDiskModel"/>
-      </item>
-     </layout>
+     <widget class="QTextBrowser" name="textBrowserDiskWriteSpeed">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>138</y>
+        <width>89</width>
+        <height>28</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_20">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>241</y>
+        <width>62</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Disk queue</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>104</y>
+        <width>109</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Read speed [MB/s]</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowserDiskQueue">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>241</y>
+        <width>89</width>
+        <height>28</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_19">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>207</y>
+        <width>90</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Wait Time [ms]</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowserDiskTotalSpeed">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>173</y>
+        <width>89</width>
+        <height>27</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_18">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>12</y>
+        <width>201</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Disk</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowserDiskWaitTime">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>207</y>
+        <width>89</width>
+        <height>27</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_16">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>138</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Write speed [MB/s]</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowserDiskReadSpeed">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>104</y>
+        <width>89</width>
+        <height>27</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_17">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>173</y>
+        <width>109</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Total speed [MB/s]</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_21">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>69</y>
+        <width>87</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Disk usage [%]</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowserDiskUsage">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>69</y>
+        <width>89</width>
+        <height>28</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowserDiskModel">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>35</y>
+        <width>207</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="baseSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QWidget" name="layoutWidget">
@@ -477,6 +587,50 @@
        <property name="title">
         <string/>
        </property>
+       <widget class="QComboBox" name="comboBoxTests">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>20</y>
+          <width>141</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>aaa</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>bbb</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>ccc</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QPushButton" name="startTest">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>60</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Start Test</string>
+        </property>
+       </widget>
       </widget>
      </item>
     </layout>
