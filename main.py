@@ -153,21 +153,14 @@ class Window(QMainWindow):
         self.my_thread.start()
 
         #initial values
-        # tests = findTests()
-        #
-        # for i, t in enumerate(tests.tests):
-        #     self.ui.comboBoxTests.addItem(f'{t}')
-        #
+        tests = findTests()
 
-
-
-
-
-        _translate = QtCore.QCoreApplication.translate
+        # combbox for tests
+        for t in tests.tests:
+            self.ui.comboBoxTests.addItem(f'{t}')
 
         self.ui.textBrowserGpuName.setText(str(Gpu.getGpuName()))
         self.ui.textBrowserDiskModel.setText(str(Disk.get_hard_drive_model()))
-        self.ui.comboBoxTests.setItemText(0, _translate("MainWindow", "cos"))
 
 
 

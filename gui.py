@@ -234,9 +234,6 @@ class Ui_MainWindow(object):
         self.comboBoxTests = QtWidgets.QComboBox(self.groupBox_6)
         self.comboBoxTests.setGeometry(QtCore.QRect(30, 20, 141, 22))
         self.comboBoxTests.setObjectName("comboBoxTests")
-        self.comboBoxTests.addItem("")
-        self.comboBoxTests.addItem("")
-        self.comboBoxTests.addItem("")
         self.startTest = QtWidgets.QPushButton(self.groupBox_6)
         self.startTest.setGeometry(QtCore.QRect(40, 60, 93, 28))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
@@ -282,9 +279,6 @@ class Ui_MainWindow(object):
         self.label_21.setText(_translate("MainWindow", "Disk usage [%]"))
         self.StartLogging.setText(_translate("MainWindow", "Start logging"))
         self.EndLogging.setText(_translate("MainWindow", "End logging"))
-        self.comboBoxTests.setItemText(0, _translate("MainWindow", "aaa"))
-        self.comboBoxTests.setItemText(1, _translate("MainWindow", "bbb"))
-        self.comboBoxTests.setItemText(2, _translate("MainWindow", "ccc"))
         self.startTest.setText(_translate("MainWindow", "Start Test"))
 
 
