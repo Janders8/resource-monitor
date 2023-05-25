@@ -31,6 +31,7 @@ from PyQt5.QtCore import pyqtSignal
 
 from PyQt5.QtCore import QThread
 
+from testSelect import findTests
 
 class MyThread(QThread):
     my_signal = pyqtSignal(dict)
@@ -152,11 +153,21 @@ class Window(QMainWindow):
         self.my_thread.start()
 
         #initial values
+        # tests = findTests()
+        #
+        # for i, t in enumerate(tests.tests):
+        #     self.ui.comboBoxTests.addItem(f'{t}')
+        #
+
+
+
+
+
         _translate = QtCore.QCoreApplication.translate
 
         self.ui.textBrowserGpuName.setText(str(Gpu.getGpuName()))
         self.ui.textBrowserDiskModel.setText(str(Disk.get_hard_drive_model()))
-        self.ui.comboBoxTests.setItemText(0, _translate("MainWindow", "innyTekst"))
+        self.ui.comboBoxTests.setItemText(0, _translate("MainWindow", "cos"))
 
 
 
