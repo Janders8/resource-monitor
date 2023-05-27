@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>791</width>
-    <height>762</height>
+    <width>955</width>
+    <height>825</height>
    </rect>
   </property>
   <property name="mouseTracking">
@@ -28,8 +28,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>767</width>
-         <height>687</height>
+         <width>931</width>
+         <height>750</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
@@ -50,177 +50,102 @@
         </property>
         <item row="0" column="1">
          <layout class="QGridLayout" name="gridLayout_5">
-          <item row="1" column="0">
-           <widget class="QSplitter" name="splitter">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
+          <item row="0" column="2">
+           <widget class="QGroupBox" name="groupBox_6">
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>400</height>
+             </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>16777215</width>
+              <width>200</width>
               <height>16777215</height>
              </size>
             </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <widget class="QPushButton" name="StartLogging">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text">
-              <string>Start logging</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="EndLogging">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="text">
-              <string>End logging</string>
-             </property>
-            </widget>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QGroupBox" name="groupBox_6">
             <property name="title">
              <string/>
             </property>
-            <widget class="QComboBox" name="comboBoxTests">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>20</y>
-               <width>141</width>
-               <height>22</height>
-              </rect>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="startTest">
-             <property name="geometry">
-              <rect>
-               <x>40</x>
-               <y>60</y>
-               <width>93</width>
-               <height>28</height>
-              </rect>
-             </property>
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text">
-              <string>Start Test</string>
-             </property>
-            </widget>
+            <layout class="QGridLayout" name="gridLayout_6">
+             <item row="0" column="0">
+              <widget class="QSplitter" name="splitter_3">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <widget class="QComboBox" name="comboBoxTests">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="startTest">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Start Test</string>
+                </property>
+               </widget>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QSplitter" name="splitter">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <widget class="QPushButton" name="StartLogging">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>Start logging</string>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="EndLogging">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="text">
+                 <string>End logging</string>
+                </property>
+               </widget>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
-         </layout>
-        </item>
-        <item row="0" column="0">
-         <widget class="QGroupBox" name="groupBox_5">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>450</width>
-            <height>450</height>
-           </size>
-          </property>
-          <property name="baseSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="title">
-           <string/>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_6">
-           <item row="0" column="1">
-            <widget class="QGroupBox" name="groupBox_4">
-             <property name="title">
-              <string/>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_4">
-              <item row="3" column="1">
-               <widget class="QTextBrowser" name="textBrowserGpuMemory"/>
-              </item>
-              <item row="2" column="1">
-               <widget class="QTextBrowser" name="textBrowserGpuLoad"/>
-              </item>
-              <item row="0" column="0" colspan="2">
-               <widget class="QLabel" name="label_11">
-                <property name="autoFillBackground">
-                 <bool>false</bool>
-                </property>
-                <property name="text">
-                 <string>GPU:</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="label_13">
-                <property name="autoFillBackground">
-                 <bool>false</bool>
-                </property>
-                <property name="text">
-                 <string>Memory [%]</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
-               <widget class="QTextBrowser" name="textBrowserGpuTemp"/>
-              </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="label_14">
-                <property name="autoFillBackground">
-                 <bool>false</bool>
-                </property>
-                <property name="text">
-                 <string>Temperature [C]</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="label_12">
-                <property name="autoFillBackground">
-                 <bool>false</bool>
-                </property>
-                <property name="text">
-                 <string>Load [%]</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0" colspan="2">
-               <widget class="QTextBrowser" name="textBrowserGpuName"/>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="0" column="0">
+          <item row="0" column="0">
+           <widget class="QSplitter" name="splitter_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
             <widget class="QGroupBox" name="groupBox">
              <property name="maximumSize">
               <size>
@@ -232,16 +157,6 @@
               <string/>
              </property>
              <layout class="QGridLayout" name="gridLayout">
-              <item row="2" column="1">
-               <widget class="QTextBrowser" name="textBrowserRamUsed">
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>30</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
               <item row="1" column="0">
                <widget class="QLabel" name="label_5">
                 <property name="autoFillBackground">
@@ -249,29 +164,6 @@
                 </property>
                 <property name="text">
                  <string>used [%]</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QTextBrowser" name="textBrowserRamPercent">
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>30</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="label_6">
-                <property name="autoFillBackground">
-                 <bool>false</bool>
-                </property>
-                <property name="text">
-                 <string>Total [GB]</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -297,6 +189,16 @@
                 </property>
                </widget>
               </item>
+              <item row="2" column="1">
+               <widget class="QTextBrowser" name="textBrowserRamUsed">
+                <property name="maximumSize">
+                 <size>
+                  <width>200</width>
+                  <height>30</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
               <item row="2" column="0">
                <widget class="QLabel" name="label_4">
                 <property name="autoFillBackground">
@@ -310,195 +212,68 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="1">
-               <widget class="QTextBrowser" name="textBrowserRamTotal">
+              <item row="1" column="1">
+               <widget class="QTextBrowser" name="textBrowserRamPercent">
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
+                  <width>200</width>
                   <height>30</height>
                  </size>
                 </property>
                </widget>
               </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QGroupBox" name="groupBox_3">
-             <property name="title">
-              <string/>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_7">
-              <item row="0" column="0" colspan="2">
-               <widget class="QLabel" name="label_18">
-                <property name="autoFillBackground">
-                 <bool>false</bool>
-                </property>
-                <property name="text">
-                 <string>Disk</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0" colspan="2">
-               <widget class="QTextBrowser" name="textBrowserDiskModel">
-                <property name="minimumSize">
+              <item row="3" column="1">
+               <widget class="QTextBrowser" name="textBrowserRamTotal">
+                <property name="maximumSize">
                  <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="baseSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
+                  <width>200</width>
+                  <height>30</height>
                  </size>
                 </property>
                </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="label_21">
-                <property name="autoFillBackground">
-                 <bool>false</bool>
-                </property>
-                <property name="text">
-                 <string>Disk usage [%]</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QTextBrowser" name="textBrowserDiskUsage"/>
               </item>
               <item row="3" column="0">
-               <widget class="QLabel" name="label_15">
+               <widget class="QLabel" name="label_6">
                 <property name="autoFillBackground">
                  <bool>false</bool>
                 </property>
                 <property name="text">
-                 <string>Read speed [MB/s]</string>
+                 <string>Total [GB]</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
                 </property>
                </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QTextBrowser" name="textBrowserDiskReadSpeed"/>
-              </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="label_16">
-                <property name="autoFillBackground">
-                 <bool>false</bool>
-                </property>
-                <property name="text">
-                 <string>Write speed [MB/s]</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
-               <widget class="QTextBrowser" name="textBrowserDiskWriteSpeed"/>
-              </item>
-              <item row="5" column="0">
-               <widget class="QLabel" name="label_17">
-                <property name="autoFillBackground">
-                 <bool>false</bool>
-                </property>
-                <property name="text">
-                 <string>Total speed [MB/s]</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="1">
-               <widget class="QTextBrowser" name="textBrowserDiskTotalSpeed"/>
-              </item>
-              <item row="6" column="0">
-               <widget class="QLabel" name="label_19">
-                <property name="autoFillBackground">
-                 <bool>false</bool>
-                </property>
-                <property name="text">
-                 <string>Wait Time [ms]</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="1">
-               <widget class="QTextBrowser" name="textBrowserDiskWaitTime"/>
-              </item>
-              <item row="7" column="0">
-               <widget class="QLabel" name="label_20">
-                <property name="autoFillBackground">
-                 <bool>false</bool>
-                </property>
-                <property name="text">
-                 <string>Disk queue</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="1">
-               <widget class="QTextBrowser" name="textBrowserDiskQueue"/>
               </item>
              </layout>
             </widget>
-           </item>
-           <item row="1" column="0">
             <widget class="QGroupBox" name="groupBox_2">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>400</height>
+              </size>
+             </property>
              <property name="title">
               <string/>
              </property>
              <layout class="QGridLayout" name="gridLayout_2">
-              <item row="0" column="0" colspan="2">
-               <widget class="QLabel" name="label">
-                <property name="text">
-                 <string>CPU:</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
               <item row="2" column="1">
-               <widget class="QTextBrowser" name="textBrowserCpuTemp">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>256</width>
-                  <height>41</height>
-                 </size>
-                </property>
-                <property name="mouseTracking">
-                 <bool>false</bool>
-                </property>
-                <property name="acceptDrops">
-                 <bool>false</bool>
-                </property>
-                <property name="autoFillBackground">
-                 <bool>false</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
                <widget class="QTextBrowser" name="textBrowserCpu">
                 <property name="enabled">
                  <bool>true</bool>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>200</width>
+                  <height>300</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>200</width>
+                  <height>16777215</height>
+                 </size>
                 </property>
                 <property name="mouseTracking">
                  <bool>false</bool>
@@ -512,24 +287,426 @@
                </widget>
               </item>
               <item row="2" column="0">
+               <widget class="QLabel" name="label_3">
+                <property name="text">
+                 <string>Threads [%]</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
                <widget class="QLabel" name="label_7">
                 <property name="text">
                  <string>Temps [C]</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="label_3">
+              <item row="1" column="0" colspan="2">
+               <widget class="QLabel" name="label">
                 <property name="text">
-                 <string>Threats [%]</string>
+                 <string>CPU:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QTextBrowser" name="textBrowserCpuTemp">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>200</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>200</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="mouseTracking">
+                 <bool>false</bool>
+                </property>
+                <property name="acceptDrops">
+                 <bool>false</bool>
+                </property>
+                <property name="autoFillBackground">
+                 <bool>false</bool>
                 </property>
                </widget>
               </item>
              </layout>
             </widget>
-           </item>
-          </layout>
-         </widget>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QGroupBox" name="groupBox_4">
+            <property name="maximumSize">
+             <size>
+              <width>600</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="title">
+             <string/>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_4">
+             <item row="4" column="1">
+              <widget class="QTextBrowser" name="textBrowserGpuTemp">
+               <property name="maximumSize">
+                <size>
+                 <width>150</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_14">
+               <property name="maximumSize">
+                <size>
+                 <width>100</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="autoFillBackground">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Temperature [C]</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0" colspan="2">
+              <widget class="QLabel" name="label_11">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="autoFillBackground">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>GPU:</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_13">
+               <property name="maximumSize">
+                <size>
+                 <width>100</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="autoFillBackground">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Memory [%]</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QTextBrowser" name="textBrowserGpuLoad">
+               <property name="maximumSize">
+                <size>
+                 <width>150</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0" colspan="2" alignment="Qt::AlignHCenter">
+              <widget class="QTextBrowser" name="textBrowserGpuName">
+               <property name="maximumSize">
+                <size>
+                 <width>400</width>
+                 <height>60</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_12">
+               <property name="maximumSize">
+                <size>
+                 <width>100</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="autoFillBackground">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Load [%]</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QTextBrowser" name="textBrowserGpuMemory">
+               <property name="maximumSize">
+                <size>
+                 <width>150</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0" colspan="2">
+              <widget class="QGroupBox" name="groupBox_3">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>400</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="title">
+                <string/>
+               </property>
+               <property name="flat">
+                <bool>false</bool>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_7">
+                <item row="8" column="1">
+                 <widget class="QTextBrowser" name="textBrowserDiskWaitTime">
+                  <property name="minimumSize">
+                   <size>
+                    <width>200</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>130</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="9" column="0">
+                 <widget class="QLabel" name="label_20">
+                  <property name="autoFillBackground">
+                   <bool>false</bool>
+                  </property>
+                  <property name="text">
+                   <string>Disk queue</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" colspan="2">
+                 <widget class="QLabel" name="label_18">
+                  <property name="autoFillBackground">
+                   <bool>false</bool>
+                  </property>
+                  <property name="text">
+                   <string>Disk</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1">
+                 <widget class="QTextBrowser" name="textBrowserDiskUsage">
+                  <property name="minimumSize">
+                   <size>
+                    <width>200</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>130</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0">
+                 <widget class="QLabel" name="label_21">
+                  <property name="autoFillBackground">
+                   <bool>false</bool>
+                  </property>
+                  <property name="text">
+                   <string>Disk usage [%]</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="0">
+                 <widget class="QLabel" name="label_17">
+                  <property name="autoFillBackground">
+                   <bool>false</bool>
+                  </property>
+                  <property name="text">
+                   <string>Total speed [MB/s]</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="1">
+                 <widget class="QTextBrowser" name="textBrowserDiskTotalSpeed">
+                  <property name="minimumSize">
+                   <size>
+                    <width>200</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>130</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="6" column="0">
+                 <widget class="QLabel" name="label_16">
+                  <property name="autoFillBackground">
+                   <bool>false</bool>
+                  </property>
+                  <property name="text">
+                   <string>Write speed [MB/s]</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="6" column="1">
+                 <widget class="QTextBrowser" name="textBrowserDiskWriteSpeed">
+                  <property name="minimumSize">
+                   <size>
+                    <width>200</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>130</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="9" column="1">
+                 <widget class="QTextBrowser" name="textBrowserDiskQueue">
+                  <property name="minimumSize">
+                   <size>
+                    <width>200</width>
+                    <height>49</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>130</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="8" column="0">
+                 <widget class="QLabel" name="label_19">
+                  <property name="autoFillBackground">
+                   <bool>false</bool>
+                  </property>
+                  <property name="text">
+                   <string>Wait Time [ms]</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="0">
+                 <widget class="QLabel" name="label_15">
+                  <property name="autoFillBackground">
+                   <bool>false</bool>
+                  </property>
+                  <property name="text">
+                   <string>Read speed [MB/s]</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0" rowspan="3" colspan="2" alignment="Qt::AlignHCenter">
+                 <widget class="QTextBrowser" name="textBrowserDiskModel">
+                  <property name="minimumSize">
+                   <size>
+                    <width>200</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>200</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                  <property name="baseSize">
+                   <size>
+                    <width>0</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="1">
+                 <widget class="QTextBrowser" name="textBrowserDiskReadSpeed">
+                  <property name="minimumSize">
+                   <size>
+                    <width>200</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>130</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -542,7 +719,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>791</width>
+     <width>955</width>
      <height>26</height>
     </rect>
    </property>

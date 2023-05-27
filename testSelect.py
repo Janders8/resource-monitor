@@ -10,6 +10,10 @@ TESTS_PATH = "tests/"
 
 # path to arcgispro python
 arcgisproPythonPath = r'C:\"Program Files"\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\python'
+
+#python on my pc
+#arcgisproPythonPath = r'C:\Users\janek\AppData\Local\Programs\Python\Python39\python.exe'
+
 class findTests():
     def __init__(self):
         try:
@@ -41,6 +45,6 @@ class findTests():
         return timeOfTest
 
 
-# test = findTests()
-#
-# test.runUsingSpecyficPython(test.testWithPaths[test.tests[0]])
+test = findTests()
+
+test.runUsingSpecyficPython(test.testWithPaths[test.tests[0]])
