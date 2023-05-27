@@ -12,7 +12,10 @@ TESTS_PATH = "tests/"
 arcgisproPythonPath = r'C:\"Program Files"\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\python'
 class findTests():
     def __init__(self):
-        self.tests = os.listdir(TESTS_PATH)
+        try:
+            self.tests = os.listdir(TESTS_PATH)
+        except:
+            self.tests = []
         self.createDict()
 
 
@@ -37,7 +40,7 @@ class findTests():
 
         return timeOfTest
 
-#
+
 # test = findTests()
 #
 # test.runUsingSpecyficPython(test.testWithPaths[test.tests[0]])
