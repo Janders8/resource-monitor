@@ -3,6 +3,7 @@ from cpu import Cpu
 from gpu import Gpu
 from disk import Disk
 import pandas as pd
+from datetime import datetime
 
 class CsvWriter(object):
     fileName = "monitoring.csv"
@@ -15,6 +16,9 @@ class CsvWriter(object):
 
     def __init__(self):
         df = pd.DataFrame()
+
+        #time stamp
+        df["timestamp"] = None
 
         #cpu
         cpu = Cpu.initiateMonitorThreat()
@@ -69,8 +73,10 @@ class CsvWriter(object):
         # empty dataframe with headers
         self.dfHeaders.drop(self.dfHeaders.index, inplace=True)
 
-        # create new row
-        newRow = cpuThread + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp] \
+        timestmap = datetime.now().strftime("%H:%M:%S")
+
+        # create new row, can be done better
+        newRow = [timestmap] + cpuThread + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp] \
                  + [diskRead] + [diskWrite] + [diskTotal] + [diskWait] + [diskQueue] + [diskUsage]
 
         # add new row
