@@ -50,7 +50,7 @@ class MyThread(QThread):
 
             cpuThread = Cpu.getThreadUsage()
             cpuThreadFormated = Cpu.getFormatedThreadUsage(cpuThread)
-            cpuTemp = Cpu.getCpusTemp()
+            cpuTemp = Cpu.getCpusTempV2()
             #cpuErrors = Cpu.getCpuErrors()
 
             print("cpu time: ", time.time() - start)

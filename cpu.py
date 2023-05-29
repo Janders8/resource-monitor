@@ -1,7 +1,7 @@
 import psutil
 import pandas as pd
 import wmi
-import time
+from pyspectator.processor import Cpu as CpuInfo
 import clr
 clr.AddReference("OpenHardwareMonitorLib")
 from OpenHardwareMonitor.Hardware import *
@@ -144,11 +144,19 @@ class Cpu:
                     if sensor.SensorType == SensorType.Temperature and sensor.Name == "CPU Package":
                         return sensor.Value
 
+    @staticmethod
+    def getCpusTempV2():
+        cpu = CpuInfo(monitoring_latency=1)
+        return(cpu.temperature)
 
 
-# i = 0
+
+
+
+
 # while True:
 #     i+=1
+#     Cpu.getCpusTempV2()
 #     print(Cpu.getCpuIdleTime(),i)
 #     time.sleep(1)
 # prev = Cpu.getCpuErrors()
