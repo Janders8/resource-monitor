@@ -1,1 +1,1 @@
-print("odpalono test2")
+print("tosty!")

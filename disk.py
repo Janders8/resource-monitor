@@ -14,7 +14,6 @@ class Disk:
     #     self.oldRead = startingValues.read_count
     #     self.oldWrite = startingValues.write_count
 
-    wmi_obj = wmi.WMI()
 
     @staticmethod
     def initiateMonitorDisk():
@@ -28,6 +27,8 @@ class Disk:
 
         return df
 
+
+    #obsolety
     @staticmethod
     def diskIOSpeed():
         disk_io_before = psutil.disk_io_counters()

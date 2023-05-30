@@ -14,16 +14,16 @@ arcgisproPythonPath = r'C:\"Program Files"\ArcGIS\Pro\bin\Python\envs\arcgispro-
 #python on my pc
 #arcgisproPythonPath = r'C:\Users\janek\AppData\Local\Programs\Python\Python39\python.exe'
 
-class findTests():
+class Tests():
     def __init__(self):
         try:
             self.tests = os.listdir(TESTS_PATH)
         except:
             self.tests = []
-        self.createDict()
+        self.__createDict()
 
 
-    def createDict(self):
+    def __createDict(self):
         self.testWithPaths = {}
         for i in self.tests:
             self.testWithPaths[i] = TESTS_PATH + i
@@ -36,7 +36,7 @@ class findTests():
     def runUsingSpecyficPython(self, testPath):
         # tutaj mozna mierzyc czas
         start = time.time()
-        os.system(fr'cmd /c {arcgisproPythonPath} {testPath}')
+        os.system(fr'cmd /c {arcgisproPythonPath} {TESTS_PATH+testPath}')
 
         timeOfTest = time.time() - start
 
@@ -45,6 +45,6 @@ class findTests():
         return timeOfTest
 
 
-test = findTests()
+test = Tests()
 
 test.runUsingSpecyficPython(test.testWithPaths[test.tests[0]])

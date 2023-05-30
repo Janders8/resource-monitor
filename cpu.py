@@ -3,6 +3,8 @@ import pandas as pd
 import wmi
 from pyspectator.processor import Cpu as CpuInfo
 import clr
+import time
+
 clr.AddReference("OpenHardwareMonitorLib")
 from OpenHardwareMonitor.Hardware import *
 
@@ -147,18 +149,16 @@ class Cpu:
     @staticmethod
     def getCpusTempV2():
         cpu = CpuInfo(monitoring_latency=1)
+
         return(cpu.temperature)
 
 
 
 
-
-
-# while True:
-#     i+=1
-#     Cpu.getCpusTempV2()
-#     print(Cpu.getCpuIdleTime(),i)
-#     time.sleep(1)
+while True:
+    print(Cpu.getCpusTempV2())
+    print(Cpu.getCpusTemp())
+    time.sleep(1)
 # prev = Cpu.getCpuErrors()
 # while True:
 #     new = Cpu.getCpuErrors()

@@ -31,7 +31,7 @@ from PyQt5.QtCore import pyqtSignal
 
 from PyQt5.QtCore import QThread
 
-from testSelect import findTests
+from testSelect import Tests
 
 class MyThread(QThread):
     my_signal = pyqtSignal(dict)
@@ -143,7 +143,7 @@ class Window(QMainWindow):
         #buttons
         self.ui.StartLogging.clicked.connect(self.clickedStartLogging)
         self.ui.EndLogging.clicked.connect(self.clickedEndLogging)
-
+        self.ui.startTest.clicked.connect(self.startTest)
         #logging
         self.isLogging = False
 
@@ -153,17 +153,19 @@ class Window(QMainWindow):
         self.my_thread.start()
 
         #initial values
-        tests = findTests()
+        self.tests = Tests()
 
         # combbox for tests
-        for t in tests.tests:
+        for t in self.tests.tests:
             self.ui.comboBoxTests.addItem(f'{t}')
 
         self.ui.textBrowserGpuName.setText(str(Gpu.getGpuName()))
         self.ui.textBrowserDiskModel.setText(str(Disk.get_hard_drive_model()))
 
 
-
+    def startTest(self):
+        print(self.ui.comboBoxTests.currentText())
+        self.tests.runUsingSpecyficPython(self.ui.comboBoxTests.currentText())
     def update(self, values = {}):
 
         start = time.time()
