@@ -1,5 +1,7 @@
 # admin acces windows
 import ctypes, sys
+import threading
+
 def is_admin():
     try:
         return ctypes.windll.shell32.IsUserAnAdmin()
@@ -163,9 +165,7 @@ class Window(QMainWindow):
         self.ui.textBrowserDiskModel.setText(str(Disk.get_hard_drive_model()))
 
 
-    def startTest(self):
-        print(self.ui.comboBoxTests.currentText())
-        self.tests.runUsingSpecyficPython(self.ui.comboBoxTests.currentText())
+
     def update(self, values = {}):
 
         start = time.time()
@@ -236,6 +236,15 @@ class Window(QMainWindow):
         end = time.time()
         print("gui update time: " , end-start)
 
+    # button functions
+    def startTest(self):
+        #testTime = self.tests.runUsingSpecyficPython(self.ui.comboBoxTests.currentText())
+
+        thread = threading.Thread(target=self.tests.runUsingSpecyficPython, args=(self.ui.comboBoxTests.currentText(),))
+
+        thread.start()
+
+        #self.ui.textBrowserTestTime.setText(str(testTime))
 
 
     def clickedStartLogging(self):

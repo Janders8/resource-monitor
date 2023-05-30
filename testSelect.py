@@ -45,6 +45,6 @@ class Tests():
         return timeOfTest
 
 
-test = Tests()
-
-test.runUsingSpecyficPython(test.testWithPaths[test.tests[0]])
+# test = Tests()
+#
+# test.runUsingSpecyficPython(test.testWithPaths[test.tests[0]])

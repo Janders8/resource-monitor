@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>955</width>
-    <height>825</height>
+    <width>927</width>
+    <height>723</height>
    </rect>
   </property>
   <property name="mouseTracking">
@@ -28,8 +28,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>931</width>
-         <height>750</height>
+         <width>903</width>
+         <height>648</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
@@ -67,78 +67,142 @@
             <property name="title">
              <string/>
             </property>
-            <layout class="QGridLayout" name="gridLayout_6">
-             <item row="0" column="0">
-              <widget class="QSplitter" name="splitter_3">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
-               </property>
-               <widget class="QComboBox" name="comboBoxTests">
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>40</height>
-                 </size>
-                </property>
-               </widget>
-               <widget class="QPushButton" name="startTest">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Start Test</string>
-                </property>
-               </widget>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QSplitter" name="splitter">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <widget class="QPushButton" name="StartLogging">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Start logging</string>
-                </property>
-               </widget>
-               <widget class="QPushButton" name="EndLogging">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-                <property name="text">
-                 <string>End logging</string>
-                </property>
-               </widget>
-              </widget>
-             </item>
-            </layout>
+            <widget class="QSplitter" name="splitter_3">
+             <property name="geometry">
+              <rect>
+               <x>12</x>
+               <y>113</y>
+               <width>171</width>
+               <height>50</height>
+              </rect>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <widget class="QComboBox" name="comboBoxTests">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>40</height>
+               </size>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="startTest">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Start Test</string>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QSplitter" name="splitter">
+             <property name="geometry">
+              <rect>
+               <x>12</x>
+               <y>593</y>
+               <width>176</width>
+               <height>28</height>
+              </rect>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <widget class="QPushButton" name="StartLogging">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Start logging</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="EndLogging">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>End logging</string>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QLabel" name="label_8">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>210</y>
+               <width>171</width>
+               <height>16</height>
+              </rect>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Time of executing test:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+            <widget class="QTextBrowser" name="textBrowserTestTime">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>240</y>
+               <width>176</width>
+               <height>30</height>
+              </rect>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>30</height>
+              </size>
+             </property>
+            </widget>
+            <widget class="QLabel" name="label_9">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>90</y>
+               <width>171</width>
+               <height>16</height>
+              </rect>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Available tests&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
            </widget>
           </item>
           <item row="0" column="0">
@@ -346,7 +410,7 @@
            <widget class="QGroupBox" name="groupBox_4">
             <property name="maximumSize">
              <size>
-              <width>600</width>
+              <width>700</width>
               <height>16777215</height>
              </size>
             </property>
@@ -361,7 +425,7 @@
               <widget class="QTextBrowser" name="textBrowserGpuTemp">
                <property name="maximumSize">
                 <size>
-                 <width>150</width>
+                 <width>200</width>
                  <height>30</height>
                 </size>
                </property>
@@ -428,7 +492,7 @@
               <widget class="QTextBrowser" name="textBrowserGpuLoad">
                <property name="maximumSize">
                 <size>
-                 <width>150</width>
+                 <width>200</width>
                  <height>30</height>
                 </size>
                </property>
@@ -438,7 +502,7 @@
               <widget class="QTextBrowser" name="textBrowserGpuName">
                <property name="maximumSize">
                 <size>
-                 <width>400</width>
+                 <width>500</width>
                  <height>60</height>
                 </size>
                </property>
@@ -467,7 +531,7 @@
               <widget class="QTextBrowser" name="textBrowserGpuMemory">
                <property name="maximumSize">
                 <size>
-                 <width>150</width>
+                 <width>200</width>
                  <height>30</height>
                 </size>
                </property>
@@ -666,13 +730,13 @@
                  <widget class="QTextBrowser" name="textBrowserDiskModel">
                   <property name="minimumSize">
                    <size>
-                    <width>200</width>
+                    <width>300</width>
                     <height>0</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>200</width>
+                    <width>300</width>
                     <height>50</height>
                    </size>
                   </property>
@@ -719,7 +783,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>955</width>
+     <width>927</width>
      <height>26</height>
     </rect>
    </property>

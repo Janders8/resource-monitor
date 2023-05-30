@@ -155,10 +155,10 @@ class Cpu:
 
 
 
-while True:
-    print(Cpu.getCpusTempV2())
-    print(Cpu.getCpusTemp())
-    time.sleep(1)
+# while True:
+#     print(Cpu.getCpusTempV2())
+#     print(Cpu.getCpusTemp())
+#     time.sleep(1)
 # prev = Cpu.getCpuErrors()
 # while True:
 #     new = Cpu.getCpuErrors()
