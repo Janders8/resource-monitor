@@ -33,10 +33,11 @@ class Tests():
     def runSelectedScript(self, testPath):
         exec(open(TESTS_PATH+testPath).read())
 
-    def runUsingSpecyficPython(self, testPath):
+    def runUsingSpecyficPython(self, test):
         # tutaj mozna mierzyc czas
         start = time.time()
-        os.system(fr'cmd /c {arcgisproPythonPath} {TESTS_PATH+testPath}')
+        print(test)
+        os.system(fr'cmd /c {arcgisproPythonPath} {TESTS_PATH+test}')
 
         timeOfTest = time.time() - start
 

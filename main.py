@@ -145,7 +145,7 @@ class Window(QMainWindow):
         #buttons
         self.ui.StartLogging.clicked.connect(self.clickedStartLogging)
         self.ui.EndLogging.clicked.connect(self.clickedEndLogging)
-        self.ui.startTest.clicked.connect(self.startTest)
+        self.ui.startTest.clicked.connect(self.manageTest)
         #logging
         self.isLogging = False
 
@@ -156,6 +156,7 @@ class Window(QMainWindow):
 
         #initial values
         self.tests = Tests()
+        self.testTime = ""
 
         # combbox for tests
         for t in self.tests.tests:
@@ -188,6 +189,8 @@ class Window(QMainWindow):
         self.ui.textBrowserCpu.setText(str(cpuThreadFormated))
         self.ui.textBrowserCpuTemp.setText(str(cpuTemp))
         #self.ui.textBrowserCpuErrors.setText(str(cpuErrors))
+
+        self.ui.textBrowserTestTime.setText(str(self.testTime))
 
 
         #ram
@@ -237,14 +240,27 @@ class Window(QMainWindow):
         print("gui update time: " , end-start)
 
     # button functions
-    def startTest(self):
-        #testTime = self.tests.runUsingSpecyficPython(self.ui.comboBoxTests.currentText())
 
-        thread = threading.Thread(target=self.tests.runUsingSpecyficPython, args=(self.ui.comboBoxTests.currentText(),))
-
+    def manageTest(self):
+        thread = threading.Thread(target=self.__startTest, args= (self.ui.comboBoxTests.currentText(),))
         thread.start()
 
-        #self.ui.textBrowserTestTime.setText(str(testTime))
+        self.ui.textBrowserTestTime.setText("Execution test...")
+        self.testTime = "Execution test..."
+
+    def __startTest(self, testPath):
+        self.ui.startTest.setEnabled(False)
+
+        time = self.tests.runUsingSpecyficPython(testPath)
+
+        self.ui.startTest.setEnabled(True)
+        print("czas testu do wyswietlenia", str(time), type(str(time)))
+
+        # simple time update doesnt work, i think ith should by in main thread
+        self.testTime = time
+        #self.ui.textBrowserTestTime.setText(str(time))
+
+
 
 
     def clickedStartLogging(self):
