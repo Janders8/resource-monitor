@@ -1,7 +1,7 @@
 import psutil
 import pandas as pd
 import wmi
-from pyspectator.processor import Cpu as CpuInfo
+#from pyspectator.processor import Cpu as CpuInfo
 import clr
 import time
 
@@ -146,11 +146,11 @@ class Cpu:
                     if sensor.SensorType == SensorType.Temperature and sensor.Name == "CPU Package":
                         return sensor.Value
 
-    @staticmethod
-    def getCpusTempV2():
-        cpu = CpuInfo(monitoring_latency=1)
-
-        return(cpu.temperature)
+    # @staticmethod
+    # def getCpusTempV2():
+    #     cpu = CpuInfo(monitoring_latency=1)
+    #
+    #     return(cpu.temperature)
 
 
 
