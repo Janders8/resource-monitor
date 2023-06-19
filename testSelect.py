@@ -18,6 +18,17 @@ class Tests():
     def __init__(self):
         try:
             self.tests = os.listdir(TESTS_PATH)
+            print(self.tests)
+
+            temp = []
+
+            for i in self.tests:
+
+                if i[-3:] == ".py":
+                    temp.append(i)
+
+            self.tests = temp
+
         except:
             self.tests = []
         self.__createDict()
