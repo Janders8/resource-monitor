@@ -23,6 +23,7 @@ from gpu import Gpu
 from gui import *
 from CsvWriter import *
 from disk import *
+from errors import *
 import time
 import sys
 from PyQt5.QtWidgets import (
@@ -80,6 +81,9 @@ class MyThread(QThread):
             diskRead, diskWrite, diskTotal, diskWaitTime, diskQueue, diskUsage = Disk.diskInfo()
             print("disk time: ", time.time() - startDisk)
 
+            #errors
+            wheaError = errors.getWheaValue()
+
             dict = {
                 # "cpuCore" : cpuCore,
                 # "cpuCoreFormated" : cpuCoreFormated,
@@ -101,7 +105,9 @@ class MyThread(QThread):
                 "diskTotal" : diskTotal,
                 "diskWaitTime" : diskWaitTime,
                 "diskQueue" : diskQueue,
-                "diskUsage" : diskUsage
+                "diskUsage" : diskUsage,
+
+                "wheaError" : wheaError
 
 
             }
@@ -229,6 +235,15 @@ class Window(QMainWindow):
         self.ui.textBrowserDiskWaitTime.setText(str(diskWait))
         self.ui.textBrowserDiskQueue.setText(str(diskQueue))
         self.ui.textBrowserDiskUsage.setText(str(diskUsage))
+
+        #errors
+        if values["wheaError"]:
+            err = "wykryto błąd!"
+        else:
+            err = "nie wykryto błędu"
+
+        self.ui.textBrowserWHEA.setText(err)
+
 
 
 

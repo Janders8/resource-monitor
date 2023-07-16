@@ -2,6 +2,7 @@ from ram import Ram
 from cpu import Cpu
 from gpu import Gpu
 from disk import Disk
+from errors import errors
 import pandas as pd
 from datetime import datetime
 
@@ -37,6 +38,10 @@ class CsvWriter(object):
         disk = Disk.initiateMonitorDisk()
         df = pd.concat([df, disk])
 
+        #errors
+        whea = errors.initiateMonitorErrors()
+        df = pd.concat([df, whea])
+
 
         #create file with headers
         self.dfHeaders = df
@@ -69,6 +74,9 @@ class CsvWriter(object):
         diskQueue = values["diskQueue"]
         diskUsage = values["diskUsage"]
 
+        #errors
+        whea = values["wheaError"]
+
 
         # empty dataframe with headers
         self.dfHeaders.drop(self.dfHeaders.index, inplace=True)
@@ -77,7 +85,7 @@ class CsvWriter(object):
 
         # create new row, can be done better
         newRow = [timestmap] + cpuThread + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp] \
-                 + [diskRead] + [diskWrite] + [diskTotal] + [diskWait] + [diskQueue] + [diskUsage]
+                 + [diskRead] + [diskWrite] + [diskTotal] + [diskWait] + [diskQueue] + [diskUsage] + [whea]
 
         # add new row
         self.dfHeaders.loc[len(self.dfHeaders)] = newRow
