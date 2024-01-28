@@ -1,14 +1,11 @@
-import GPUtil
-# GPUtil.showUtilization()
+import time
+import pynvml
 import pandas as pd
 
+print("initiatedddd")
 
 class Gpu:
-    # if exist any gpu
-    if GPUtil.getGPUs():
-        GPUs = GPUtil.getGPUs()
-    else:
-        GPUs = [None]
+    pynvml.nvmlInit()
 
     @staticmethod
     def initiateMonitor():
@@ -22,35 +19,44 @@ class Gpu:
     @staticmethod
     def getGpuLoad():
         try:
-            return GPUtil.getGPUs()[0].load * 100
-        except:
+            handle = pynvml.nvmlDeviceGetHandleByIndex(0)
+            return pynvml.nvmlDeviceGetUtilizationRates(handle).gpu
+        except Exception as e:
+            print(e)
             return ""
 
     @staticmethod
     def getGpuMemoryUsed():
         try:
-            return round(GPUtil.getGPUs()[0].memoryUtil * 100, 1)
-        except:
+            handle = pynvml.nvmlDeviceGetHandleByIndex(0)
+            return pynvml.nvmlDeviceGetMemoryInfo(handle).used / pynvml.nvmlDeviceGetMemoryInfo(handle).total * 100
+        except Exception as e:
+            print(e)
             return ""
 
     @staticmethod
     def getGpuName():
         try:
-            return GPUtil.getGPUs()[0].name
-        except:
+            handle = pynvml.nvmlDeviceGetHandleByIndex(0)
+            return pynvml.nvmlDeviceGetName(handle)
+        except Exception as e:
+            print(e)
             return ""
 
     @staticmethod
     def getGpuTemp():
         try:
-            return GPUtil.getGPUs()[0].temperature
-        except:
+            handle = pynvml.nvmlDeviceGetHandleByIndex(0)
+            return pynvml.nvmlDeviceGetTemperature(handle, pynvml.NVML_TEMPERATURE_GPU)
+        except Exception as e:
+            print(e)
             return ""
 
+# while True:
+#     time.sleep(2)
 #
-#
-# print(Gpu.getGpuLoad())
-# print(Gpu.getGpuMemoryUsed())
-#
-# print(Gpu.getGpuName())
-# print(Gpu.getGpuTemp())
+#     print(Gpu.getGpuLoad())
+#     print(Gpu.getGpuMemoryUsed())
+#     print(Gpu.getGpuName())
+#     print(Gpu.getGpuTemp())
+#     print("\n")
