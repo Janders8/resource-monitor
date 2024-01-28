@@ -6,9 +6,9 @@ from errors import errors
 import pandas as pd
 from datetime import datetime
 
+
 class CsvWriter(object):
     fileName = "monitoring.csv"
-
 
     def __new__(cls):
         if not hasattr(cls, 'instance'):
@@ -18,43 +18,42 @@ class CsvWriter(object):
     def __init__(self):
         df = pd.DataFrame()
 
-        #time stamp
+        # time stamp
         df["timestamp"] = None
 
-        #cpu
+        # cpu
         cpu = Cpu.initiateMonitorThreat()
-        #print(cpu)
+        # print(cpu)
         df = pd.concat([df, cpu])
-        #ram
+        # ram
         ram = Ram.initiateMonitor()
-        #print(ram)
+        # print(ram)
         df = pd.concat([df, ram])
 
-        #gpu
+        # gpu
         gpu = Gpu.initiateMonitor()
         df = pd.concat([df, gpu])
 
-        #disk
+        # disk
         disk = Disk.initiateMonitorDisk()
         df = pd.concat([df, disk])
 
-        #errors
+        # errors
         whea = errors.initiateMonitorErrors()
         df = pd.concat([df, whea])
 
-
-        #create file with headers
+        # create file with headers
         self.dfHeaders = df
-        self.dfHeaders.to_csv(CsvWriter.fileName, encoding='utf-8', index = False)
+        self.dfHeaders.to_csv(CsvWriter.fileName, encoding='utf-8', index=False)
 
     def update(self, values):
-        #cpu
+        # cpu
         # cpuCore = values["cpuCore"]
         # cpuCoreFormated = values["cpuCoreFormated"]
         cpuThread = values["cpuThread"]
         cpuThreadFormated = values["cpuThreadFormated"]
         cpuTemp = values["cpuTemp"]
-        #cpuErrors = values["cpuErrors"]
+        # cpuErrors = values["cpuErrors"]
 
         # ram
         ramPercent = values["ramPercent"]
@@ -66,7 +65,7 @@ class CsvWriter(object):
         gpuMemory = values["gpuMemory"]
         gpuTemp = values["gpuTemp"]
 
-        #disk
+        # disk
         diskRead = values["diskRead"]
         diskWrite = values["diskWrite"]
         diskTotal = values["diskTotal"]
@@ -74,9 +73,8 @@ class CsvWriter(object):
         diskQueue = values["diskQueue"]
         diskUsage = values["diskUsage"]
 
-        #errors
+        # errors
         whea = values["wheaError"]
-
 
         # empty dataframe with headers
         self.dfHeaders.drop(self.dfHeaders.index, inplace=True)
@@ -84,7 +82,8 @@ class CsvWriter(object):
         timestmap = datetime.now().strftime("%H:%M:%S")
 
         # create new row, can be done better
-        newRow = [timestmap] + cpuThread + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [gpuMemory] + [gpuTemp] \
+        newRow = [timestmap] + cpuThread + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [
+            gpuMemory] + [gpuTemp] \
                  + [diskRead] + [diskWrite] + [diskTotal] + [diskWait] + [diskQueue] + [diskUsage] + [whea]
 
         # add new row

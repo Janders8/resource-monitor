@@ -1,19 +1,14 @@
 import GPUtil
-#GPUtil.showUtilization()
+# GPUtil.showUtilization()
 import pandas as pd
 
 
 class Gpu:
-
-
-
     # if exist any gpu
     if GPUtil.getGPUs():
         GPUs = GPUtil.getGPUs()
     else:
         GPUs = [None]
-
-
 
     @staticmethod
     def initiateMonitor():
@@ -23,10 +18,6 @@ class Gpu:
         df["Gpu temp"] = None
 
         return df
-
-
-
-
 
     @staticmethod
     def getGpuLoad():
@@ -38,7 +29,7 @@ class Gpu:
     @staticmethod
     def getGpuMemoryUsed():
         try:
-            return round(GPUtil.getGPUs()[0].memoryUtil * 100,1)
+            return round(GPUtil.getGPUs()[0].memoryUtil * 100, 1)
         except:
             return ""
 
@@ -48,6 +39,7 @@ class Gpu:
             return GPUtil.getGPUs()[0].name
         except:
             return ""
+
     @staticmethod
     def getGpuTemp():
         try:

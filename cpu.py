@@ -1,12 +1,13 @@
 import psutil
 import pandas as pd
 import wmi
-#from pyspectator.processor import Cpu as CpuInfo
+# from pyspectator.processor import Cpu as CpuInfo
 import clr
 import time
 
 clr.AddReference("OpenHardwareMonitorLib")
 from OpenHardwareMonitor.Hardware import *
+
 
 class Cpu:
     computer = Computer()
@@ -17,9 +18,6 @@ class Cpu:
 
     w = wmi.WMI()
 
-
-
-
     @staticmethod
     def initiateMonitorThreat():
         df = pd.DataFrame()
@@ -29,7 +27,7 @@ class Cpu:
             df["thread_" + str(i) + " Load"] = None
 
         df["cpuTemp"] = None
-        #df["cpuErrors"] = None
+        # df["cpuErrors"] = None
 
         return df
 
@@ -51,7 +49,7 @@ class Cpu:
         return result
 
     @staticmethod
-    #todo
+    # todo
     def getCpuErrors():
         cpu_stats = psutil.cpu_stats()
         # Ilość przełączeń kontekstu procesora
@@ -64,8 +62,6 @@ class Cpu:
         result = newErrors - Cpu._oldErrors
         Cpu._oldErrors = newErrors
         return result
-
-
 
     @staticmethod
     def initiateMonitorCore():
@@ -83,8 +79,6 @@ class Cpu:
     def getThreadUsage():
         return psutil.cpu_percent(interval=0.1, percpu=True)
 
-
-
     @staticmethod
     def getFormatedThreadUsage(ThreadUsage):
         result = ""
@@ -99,7 +93,7 @@ class Cpu:
         result = ""
 
         for i, v in enumerate(CoreUsage):
-            result += "core_" + str(i) + " :" + str(round(v,3)) + "\n"
+            result += "core_" + str(i) + " :" + str(round(v, 3)) + "\n"
 
         return result
 
@@ -109,7 +103,7 @@ class Cpu:
 
     @staticmethod
     def getCoreUsage():
-        print(cpu_usage_percent = psutil.cpu_percent(interval=0.5, percpu=True))
+        print(cpu_usage_percent=psutil.cpu_percent(interval=0.5, percpu=True))
 
     @staticmethod
     def getCoreUsage():
@@ -122,13 +116,12 @@ class Cpu:
         # Group the usage of hyper-threading cores with their corresponding physical core
         physical_core_usage_percent = []
         # check if there is hyper-threading
-        if (len(all_core_usage_percent) == 2* num_physical_cores):
+        if (len(all_core_usage_percent) == 2 * num_physical_cores):
             for i in range(num_physical_cores):
                 core_usage = (all_core_usage_percent[i * 2] + all_core_usage_percent[i * 2 + 1]) / 2
                 physical_core_usage_percent.append(core_usage)
         else:
             physical_core_usage_percent = all_core_usage_percent
-
 
         return physical_core_usage_percent
         # Print the usage of each physical core
@@ -152,9 +145,6 @@ class Cpu:
     #
     #     return(cpu.temperature)
 
-
-
-
 # while True:
 #     print(Cpu.getCpusTempV2())
 #     print(Cpu.getCpusTemp())
@@ -167,9 +157,9 @@ class Cpu:
 #     time.sleep(1)
 #
 # print(Cpu.getCpuErrors())
-#print(Cpu.getCoreUsage())
+# print(Cpu.getCoreUsage())
 
-#print (Cpu.getThreadUsage())
+# print (Cpu.getThreadUsage())
 # print(Cpu.getCpusTemp())
 
 # df = Cpu.initiateMonitor()
@@ -178,10 +168,10 @@ class Cpu:
 #
 # print(df)
 
-#print(Cpu.getFormatedThreadUsage())
+# print(Cpu.getFormatedThreadUsage())
 
-#import clr # the pythonnet module.
-#clr.AddReference(r'OpenHardwareMonitorLib')
+# import clr # the pythonnet module.
+# clr.AddReference(r'OpenHardwareMonitorLib')
 # e.g. clr.AddReference(r'OpenHardwareMonitor/OpenHardwareMonitorLib'), without .dll
 
 # from OpenHardwareMonitor.Hardware import Computer
@@ -191,7 +181,7 @@ class Cpu:
 # c.HDDEnabled = True
 # c.Open()
 
-#print(c.Hardware)
+# print(c.Hardware)
 
 
 # for i in c.Hardware:
