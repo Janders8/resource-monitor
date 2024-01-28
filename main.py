@@ -8,12 +8,12 @@ def is_admin():
     except:
         return False
 
-# if is_admin():
-#     pass
-# else:
-#     # Re-run the program with admin rights
-#     ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
-#     sys.exit(1)
+if is_admin():
+    pass
+else:
+    # Re-run the program with admin rights
+    ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+    sys.exit(1)
 
 
 import pandas as pd
