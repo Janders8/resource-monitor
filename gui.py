@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 842, 589))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.label_2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.label_2.setGeometry(QtCore.QRect(20, 10, 280, 30))
+        self.label_2.setGeometry(QtCore.QRect(30, 10, 280, 30))
         self.label_2.setMaximumSize(QtCore.QSize(16777215, 30))
         self.label_2.setAutoFillBackground(False)
         self.label_2.setAlignment(QtCore.Qt.AlignCenter)
