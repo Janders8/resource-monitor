@@ -29,7 +29,7 @@ class Gpu:
     def getGpuMemoryUsed():
         try:
             handle = pynvml.nvmlDeviceGetHandleByIndex(0)
-            return pynvml.nvmlDeviceGetMemoryInfo(handle).used / pynvml.nvmlDeviceGetMemoryInfo(handle).total * 100
+            return round(pynvml.nvmlDeviceGetMemoryInfo(handle).used / pynvml.nvmlDeviceGetMemoryInfo(handle).total * 100, 2)
         except Exception as e:
             print(e)
             return ""

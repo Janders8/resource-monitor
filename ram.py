@@ -18,7 +18,7 @@ class Ram:
 
     @staticmethod
     def getRamPercentage():
-        return psutil.virtual_memory()[2]
+        return round(psutil.virtual_memory()[2], 2)
 
     @staticmethod
     def getRamUsed():
