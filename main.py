@@ -238,9 +238,9 @@ class Window(QMainWindow):
 
         #errors
         if values["wheaError"]:
-            err = "wykryto błąd!"
+            err = "Detected hardware error!"
         else:
-            err = "nie wykryto błędu"
+            err = "No error detected"
 
         self.ui.textBrowserWHEA.setText(err)
 
