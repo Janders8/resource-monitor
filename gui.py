@@ -375,7 +375,7 @@ class Ui_MainWindow(object):
         self.label_17.setText(_translate("MainWindow", "Total speed [MB/s]"))
         self.label_9.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">Available tests</p></body></html>"))
         self.startTest.setText(_translate("MainWindow", "Start Test"))
-        self.label_8.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">Time of executing test:</p></body></html>"))
+        self.label_8.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">Test execution time</p></body></html>"))
         self.label_10.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">WHEA Error:</p></body></html>"))
         self.EndLogging.setText(_translate("MainWindow", "End logging"))
         self.StartLogging.setText(_translate("MainWindow", "Start logging"))

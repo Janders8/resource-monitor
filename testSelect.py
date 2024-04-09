@@ -1,18 +1,11 @@
-# todo
-# select all py files from folder "tests" and ...
-
-
 import os
 import time
 
-
 TESTS_PATH = "tests/"
 
-# path to arcgispro python
-arcgisproPythonPath = r'C:\"Program Files"\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\python'
+# path to arcgispro python in CENAGIS ESRI template
+arcgispro_python_path = r'C:\"Program Files"\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\python'
 
-#python on my pc
-#arcgisproPythonPath = r'C:\Users\janek\AppData\Local\Programs\Python\Python39\python.exe'
 
 class Tests():
     def __init__(self):
@@ -31,32 +24,24 @@ class Tests():
 
         except:
             self.tests = []
-        self.__createDict()
+        self.create_dict()
 
-
-    def __createDict(self):
+    def create_dict(self):
         self.testWithPaths = {}
         for i in self.tests:
             self.testWithPaths[i] = TESTS_PATH + i
 
-        #print(self.testWithPaths)
 
-    def runSelectedScript(self, testPath):
-        exec(open(TESTS_PATH+testPath).read())
+    def run_selected_script(self, testPath):
+        exec(open(TESTS_PATH + testPath).read())
 
-    def runUsingSpecyficPython(self, test):
-        # tutaj mozna mierzyc czas
+    def run_using_specyfic_python(self, test):
         start = time.time()
         print(test)
-        os.system(fr'cmd /c {arcgisproPythonPath} {TESTS_PATH+test}')
+        os.system(fr'cmd /c {arcgispro_python_path} {TESTS_PATH + test}')
 
-        timeOfTest = time.time() - start
+        time_of_test = time.time() - start
 
-        print("czas testu: ", timeOfTest)
+        print("czas testu: ", time_of_test)
 
-        return timeOfTest
-
-
-# test = Tests()
-#
-# test.runUsingSpecyficPython(test.testWithPaths[test.tests[0]])
+        return time_of_test

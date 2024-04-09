@@ -112,7 +112,7 @@ class Window(QMainWindow):
         self.ui.setupUi(self)
 
         # buttons
-        self.ui.StartLogging.clicked.connect(self.clickedS_start_logging)
+        self.ui.StartLogging.clicked.connect(self.clicked_start_logging)
         self.ui.EndLogging.clicked.connect(self.clicked_end_logging)
         self.ui.startTest.clicked.connect(self.manage_test)
         # logging
@@ -204,16 +204,15 @@ class Window(QMainWindow):
     def start_test(self, test_path):
         self.ui.startTest.setEnabled(False)
 
-        time = self.tests.runUsingSpecyficPython(test_path)
+        time = self.tests.run_using_specyfic_python(test_path)
 
         self.ui.startTest.setEnabled(True)
         print("czas testu do wyswietlenia", str(time), type(str(time)))
 
-        # simple time update doesnt work, i think ith should by in main thread
         self.testTime = time
-        # self.ui.textBrowserTestTime.setText(str(time))
 
-    def clickedS_start_logging(self):
+
+    def clicked_start_logging(self):
         self.isLogging = True
         self.ui.StartLogging.setEnabled(False)
         self.ui.EndLogging.setEnabled(True)
