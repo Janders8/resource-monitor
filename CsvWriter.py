@@ -22,16 +22,16 @@ class CsvWriter(object):
         df["timestamp"] = None
 
         # cpu
-        cpu = Cpu.initiateMonitorThreat()
+        cpu = Cpu.initiate_monitor_threat()
         # print(cpu)
         df = pd.concat([df, cpu])
         # ram
-        ram = Ram.initiateMonitor()
+        ram = Ram.initiate_monitor()
         # print(ram)
         df = pd.concat([df, ram])
 
         # gpu
-        gpu = Gpu.initiateMonitor()
+        gpu = Gpu.initiate_monitor()
         df = pd.concat([df, gpu])
 
         # disk
@@ -39,7 +39,7 @@ class CsvWriter(object):
         df = pd.concat([df, disk])
 
         # errors
-        whea = errors.initiateMonitorErrors()
+        whea = errors.initiate_monitor_errors()
         df = pd.concat([df, whea])
 
         # create file with headers
@@ -50,44 +50,44 @@ class CsvWriter(object):
         # cpu
         # cpuCore = values["cpuCore"]
         # cpuCoreFormated = values["cpuCoreFormated"]
-        cpuThread = values["cpuThread"]
-        cpuThreadFormated = values["cpuThreadFormated"]
-        cpuTemp = values["cpuTemp"]
+        cpu_thread = values["cpu_thread"]
+        cpu_thread_formated = values["cpu_thread_formated"]
+        cpu_temp = values["cpu_temp"]
         # cpuErrors = values["cpuErrors"]
 
         # ram
-        ramPercent = values["ramPercent"]
-        ramUsed = values["ramUsed"]
-        ramTotal = values["ramTotal"]
+        ram_percent = values["ram_percent"]
+        ram_used = values["ram_used"]
+        ram_total = values["ram_total"]
 
         # gpu
-        gpuLoad = values["gpuLoad"]
-        gpuMemory = values["gpuMemory"]
-        gpuTemp = values["gpuTemp"]
+        gpu_load = values["gpu_load"]
+        gpu_memory = values["gpu_memory"]
+        gpu_temp = values["gpu_temp"]
 
         # disk
-        diskRead = values["diskRead"]
-        diskWrite = values["diskWrite"]
-        diskTotal = values["diskTotal"]
-        diskWait = values["diskWaitTime"]
-        diskQueue = values["diskQueue"]
-        diskUsage = values["diskUsage"]
+        disk_read = values["disk_read"]
+        disk_write = values["disk_write"]
+        disk_total = values["disk_total"]
+        disk_wait = values["disk_wait_time"]
+        disk_queue = values["disk_queue"]
+        disk_usage = values["disk_usage"]
 
         # errors
-        whea = values["wheaError"]
+        whea = values["whea_error"]
 
         # empty dataframe with headers
         self.dfHeaders.drop(self.dfHeaders.index, inplace=True)
 
-        timestmap = datetime.now().strftime("%H:%M:%S")
+        timestamp = datetime.now().strftime("%H:%M:%S")
 
         # create new row, can be done better
-        newRow = [timestmap] + cpuThread + [cpuTemp] + [ramPercent] + [ramUsed] + [ramTotal] + [gpuLoad] + [
-            gpuMemory] + [gpuTemp] \
-                 + [diskRead] + [diskWrite] + [diskTotal] + [diskWait] + [diskQueue] + [diskUsage] + [whea]
+        new_row = [timestamp] + cpu_thread + [cpu_temp] + [ram_percent] + [ram_used] + [ram_total] + [gpu_load] + [
+            gpu_memory] + [gpu_temp] \
+                  + [disk_read] + [disk_write] + [disk_total] + [disk_wait] + [disk_queue] + [disk_usage] + [whea]
 
         # add new row
-        self.dfHeaders.loc[len(self.dfHeaders)] = newRow
+        self.dfHeaders.loc[len(self.dfHeaders)] = new_row
 
         print(self.dfHeaders)
 

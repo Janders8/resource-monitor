@@ -6,12 +6,6 @@ import wmi
 
 class Disk:
 
-    # def __init__(self):
-    #     startingValues = psutil.disk_io_counters()
-    #
-    #     self.oldRead = startingValues.read_count
-    #     self.oldWrite = startingValues.write_count
-
     @staticmethod
     def initiateMonitorDisk():
         df = pd.DataFrame()
@@ -26,50 +20,46 @@ class Disk:
 
     # obsolety
     @staticmethod
-    def diskIOSpeed():
+    def disk_io_speed():
         disk_io_before = psutil.disk_io_counters()
         time.sleep(0.5)  # Wait for 1 second
         disk_io_after = psutil.disk_io_counters()
 
         # converting valuest to get MB/s
-        readBytes = round((disk_io_after.read_bytes - disk_io_before.read_bytes) / 1024 / 1024 * 2, 2)
-        writeBytes = round((disk_io_after.write_bytes - disk_io_before.write_bytes) / 1024 / 1024 * 2, 2)
+        read_bytes = round((disk_io_after.read_bytes - disk_io_before.read_bytes) / 1024 / 1024 * 2, 2)
+        write_bytes = round((disk_io_after.write_bytes - disk_io_before.write_bytes) / 1024 / 1024 * 2, 2)
 
-        totalBytes = readBytes + writeBytes
+        total_bytes = read_bytes + write_bytes
 
-        return readBytes, writeBytes, totalBytes
+        return read_bytes, write_bytes, total_bytes
 
     @staticmethod
-    def diskInfo():
+    def disk_info():
         wmi_obj = wmi.WMI()
         disks = wmi_obj.Win32_PerfFormattedData_PerfDisk_PhysicalDisk()[0]
 
-        diskRead = round(int(disks.DiskReadBytesPersec) / 1024 / 1024, 2)
-        diskWrite = round(int(disks.DiskWriteBytesPersec) / 1024 / 1024, 2)
-        diskTotal = round(int(disks.DiskBytesPersec) / 1024 / 1024, 2)
-        diskWatiTime = disks.AvgDiskSecPerTransfer * 1000
-        diskQueue = disks.CurrentDiskQueueLength
-        diskUsage = 100 - int(disks.PercentIdleTime)
-        return diskRead, diskWrite, diskTotal, diskWatiTime, diskQueue, diskUsage
+        disk_read = round(int(disks.DiskReadBytesPersec) / 1024 / 1024, 2)
+        disk_write = round(int(disks.DiskWriteBytesPersec) / 1024 / 1024, 2)
+        disk_total = round(int(disks.DiskBytesPersec) / 1024 / 1024, 2)
+        disk_wait_time = disks.AvgDiskSecPerTransfer * 1000
+        disk_queue = disks.CurrentDiskQueueLength
+        disk_usage = 100 - int(disks.PercentIdleTime)
+        return disk_read, disk_write, disk_total, disk_wait_time, disk_queue, disk_usage
 
     @staticmethod
-    def getDiskMany():
+    def get_disk_many():
         disk_errors = Disk.wmi_obj.query("SELECT * FROM Win32_PerfFormattedData_PerfDisk_PhysicalDisk")
 
         for disk in disk_errors:
             return disk.PercentIdleTime
 
     @staticmethod
-    def diskWaitTime():
-        # Tworzenie obiektu WMI i pobieranie informacji o dysku
+    def disk_wait_time():
         wmi_obj = wmi.WMI()
         disk = wmi_obj.Win32_PerfFormattedData_PerfDisk_PhysicalDisk()[0]
+        wait_time = disk.AvgDiskSecPerTransfer * 1000
 
-        print(disk)
-        # Obliczanie czasu oczekiwania na dane z dysku twardego
-        waitTime = disk.AvgDiskSecPerTransfer * 1000
-
-        return (waitTime)
+        return wait_time
 
     @staticmethod
     def get_hard_drive_model():
@@ -77,19 +67,4 @@ class Disk:
         for drive in c.Win32_DiskDrive():
             return drive.Model
 
-        return "no disc detected"
-
-        # print("Czas oczekiwania na dane z dysku twardego:", wait_time, "ms")
-
-# print(Disk.disk_wait_time())
-
-# while True:
-#     start = time.time()
-#     res = Disk.getDiskMany()
-#
-#     print(res)
-#     print(time.time() - start)
-#
-#     time.sleep(1)
-
-# print(Disk.diskInfo())
+        return "No disc detected"

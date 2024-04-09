@@ -1,12 +1,13 @@
-# admin acces windows
 import ctypes, sys
 import threading
+
 
 def is_admin():
     try:
         return ctypes.windll.shell32.IsUserAnAdmin()
     except:
         return False
+
 
 if is_admin():
     pass
@@ -15,11 +16,6 @@ else:
     ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
     sys.exit(1)
 
-
-import pandas as pd
-from ram import Ram
-from cpu import Cpu
-from gpu import Gpu
 from gui import *
 from CsvWriter import *
 from disk import *
@@ -27,17 +23,16 @@ from errors import *
 import time
 import sys
 from PyQt5.QtWidgets import (
-    QApplication, QDialog, QMainWindow, QMessageBox, QLabel, QTextBrowser
+    QApplication, QMainWindow
 )
 from PyQt5.QtCore import pyqtSignal
-
-
 from PyQt5.QtCore import QThread
-
 from testSelect import Tests
 
-class MyThread(QThread):
-    my_signal = pyqtSignal(dict)
+
+class WorkerThread(QThread):
+    result_signal = pyqtSignal(dict)
+
     def __init__(self):
         super().__init__()
 
@@ -45,122 +40,90 @@ class MyThread(QThread):
 
         while True:
             start = time.time()
-            # cpu cores
-            # cpuCore = Cpu.getCoreUsage()
-            # cpuCoreFormated = Cpu.getFormatedCoreUsage(cpuCore)
-            # cpuTemp = Cpu.getCpusTemp()
-            # print("cpu time: ", time.time() - start)
 
-            cpuThread = Cpu.getThreadUsage()
-            cpuThreadFormated = Cpu.getFormatedThreadUsage(cpuThread)
-            cpuTemp = Cpu.getCpusTemp()
-            #cpuErrors = Cpu.getCpuErrors()
-
+            # cpu
+            cpu_thread = Cpu.get_thread_usage()
+            cpu_thread_formated = Cpu.get_formated_thread_usage(cpu_thread)
+            cpu_temp = Cpu.get_cpus_temp()
             print("cpu time: ", time.time() - start)
 
-
             # ram
-            startRam = time.time()
-            ramPercent = Ram.getRamPercentage()
-            ramUsed = Ram.getRamUsed()
-            ramTotal = Ram.getRamTotal()
-            print("ram time: ", time.time() - startRam)
+            start_ram = time.time()
+            ram_percent = Ram.get_ram_percentage()
+            ram_used = Ram.get_ram_used()
+            ram_total = Ram.get_ram_total()
+            print("ram time: ", time.time() - start_ram)
 
             # gpu
-            startGpu = time.time()
-            gpuLoad = Gpu.getGpuLoad()
-            gpuMemory = Gpu.getGpuMemoryUsed()
-            gpuTemp = Gpu.getGpuTemp()
-            print("gpu time: ", time.time() - startGpu)
-
-
+            start_gpu = time.time()
+            gpu_load = Gpu.get_gpu_load()
+            gpu_memory = Gpu.get_gpu_memory_used()
+            gpu_temp = Gpu.get_gpu_temp()
+            print("gpu time: ", time.time() - start_gpu)
 
             # disk speed in MB/s
-            startDisk = time.time()
-            #diskRead, diskWrite, diskTotal = Disk.diskIOSpeed()
-            diskRead, diskWrite, diskTotal, diskWaitTime, diskQueue, diskUsage = Disk.diskInfo()
-            print("disk time: ", time.time() - startDisk)
+            start_disk = time.time()
+            # diskRead, diskWrite, diskTotal = Disk.diskIOSpeed()
+            disk_read, disk_write, disk_total, disk_wait_time, disk_queue, disk_usage = Disk.disk_info()
+            print("disk time: ", time.time() - start_disk)
 
-            #errors
-            wheaError = errors.getWheaValue()
+            # errors
+            whea_error = errors.get_whea_value()
 
-            dict = {
-                # "cpuCore" : cpuCore,
-                # "cpuCoreFormated" : cpuCoreFormated,
-                "cpuThread" : cpuThread,
-                "cpuThreadFormated" : cpuThreadFormated,
-                "cpuTemp" : cpuTemp,
-                #"cpuErrors" : cpuErrors,
+            parameters_dict = {
+                "cpu_thread": cpu_thread,
+                "cpu_thread_formated": cpu_thread_formated,
+                "cpu_temp": cpu_temp,
+                "ram_percent": ram_percent,
+                "ram_used": ram_used,
+                "ram_total": ram_total,
 
-                "ramPercent" : ramPercent,
-                "ramUsed" : ramUsed,
-                "ramTotal" : ramTotal,
+                "gpu_load": gpu_load,
+                "gpu_memory": gpu_memory,
+                "gpu_temp": gpu_temp,
 
-                "gpuLoad" : gpuLoad,
-                "gpuMemory" : gpuMemory,
-                "gpuTemp" : gpuTemp,
+                "disk_read": disk_read,
+                "disk_write": disk_write,
+                "disk_total": disk_total,
+                "disk_wait_time": disk_wait_time,
+                "disk_queue": disk_queue,
+                "disk_usage": disk_usage,
 
-                "diskRead" : diskRead,
-                "diskWrite" : diskWrite,
-                "diskTotal" : diskTotal,
-                "diskWaitTime" : diskWaitTime,
-                "diskQueue" : diskQueue,
-                "diskUsage" : diskUsage,
-
-                "wheaError" : wheaError
-
+                "whea_error": whea_error
 
             }
-            self.my_signal.emit(dict)
+            self.result_signal.emit(parameters_dict)
             end = time.time()
 
-            print("time of geating measurments: ", end-start)
-            #update every two seconds
+            print("time of geating measurments: ", end - start)
+            # update every two seconds
             try:
-                time.sleep(2 - (end-start))
+                time.sleep(2 - (end - start))
             except:
                 pass
 
 
 class Window(QMainWindow):
 
-    def __init__(self, cpus, parent=None):
+    def __init__(self, parent=None):
         super().__init__(parent)
+        self.csv = CsvWriter()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        # create threads fields
-        #
-        # labelList = []
-        # textField = []
-        #
-        # for i in range(cpus):
-        #     labelList.append((QLabel("thread_" + str(i))))
-        #     #textField.append(QTextBrowser(self.ui.formLayoutWidget))
-        #     #self.ui.formLayout.addRow(labelList[i], textField[i])
-
-
-
-
-        # timer
-        # self.timer = QTimer()
-        # self.timer.setInterval(1000)
-        # self.timer.start()
-        # self.timer.timeout.connect(self.update)
-
-        #buttons
-        self.ui.StartLogging.clicked.connect(self.clickedStartLogging)
-        self.ui.EndLogging.clicked.connect(self.clickedEndLogging)
-        self.ui.startTest.clicked.connect(self.manageTest)
-        #logging
+        # buttons
+        self.ui.StartLogging.clicked.connect(self.clickedS_start_logging)
+        self.ui.EndLogging.clicked.connect(self.clicked_end_logging)
+        self.ui.startTest.clicked.connect(self.manage_test)
+        # logging
         self.isLogging = False
 
-        #measure threat
-        self.my_thread = MyThread()
-        self.my_thread.my_signal.connect(self.update)
+        # measure threat
+        self.my_thread = WorkerThread()
+        self.my_thread.result_signal.connect(self.update)
         self.my_thread.start()
 
-        #initial values
+        # initial values
         self.tests = Tests()
         self.testTime = ""
 
@@ -168,132 +131,101 @@ class Window(QMainWindow):
         for t in self.tests.tests:
             self.ui.comboBoxTests.addItem(f'{t}')
 
-        self.ui.textBrowserGpuName.setText(str(Gpu.getGpuName()))
+        self.ui.textBrowserGpuName.setText(str(Gpu.get_gpu_name()))
         self.ui.textBrowserDiskModel.setText(str(Disk.get_hard_drive_model()))
 
-
-
-    def update(self, values = {}):
+    def update(self, values={}):
 
         start = time.time()
 
-        # updating display
-        #cpu
-        # cpuThread = Cpu.getThreadUsage()
-        # cpuThreadFormated = Cpu.getFormatedThreadUsage(cpuThread)
+        cpu_thread_formated = values["cpu_thread_formated"]
+        cpu_temp = values["cpu_temp"]
 
-
-        # cpuCore = values["cpuCore"]
-        # cpuCoreFormated = values["cpuCoreFormated"]
-
-        cpuThread = values["cpuThread"]
-        cpuThreadFormated = values["cpuThreadFormated"]
-        cpuTemp = values["cpuTemp"]
-        #cpuErrors = values["cpuErrors"]
-
-
-        self.ui.textBrowserCpu.setText(str(cpuThreadFormated))
-        self.ui.textBrowserCpuTemp.setText(str(cpuTemp))
-        #self.ui.textBrowserCpuErrors.setText(str(cpuErrors))
-
+        self.ui.textBrowserCpu.setText(str(cpu_thread_formated))
+        self.ui.textBrowserCpuTemp.setText(str(cpu_temp))
         self.ui.textBrowserTestTime.setText(str(self.testTime))
 
+        # ram
+        ram_percent = values["ram_percent"]
+        ram_used = values["ram_used"]
+        ram_total = values["ram_total"]
 
-        #ram
-        ramPercent = values["ramPercent"]
-        ramUsed = values["ramUsed"]
-        ramTotal = values["ramTotal"]
+        self.ui.textBrowserRamPercent.setText(str(ram_percent))
+        self.ui.textBrowserRamUsed.setText(str(ram_used))
+        self.ui.textBrowserRamTotal.setText(str(ram_total))
 
-        self.ui.textBrowserRamPercent.setText(str(ramPercent))
-        self.ui.textBrowserRamUsed.setText(str(ramUsed))
-        self.ui.textBrowserRamTotal.setText(str(ramTotal))
-        #gpu
+        # gpu
+        gpu_load = values["gpu_load"]
+        gpu_memory = values["gpu_memory"]
+        gpu_temp = values["gpu_temp"]
 
-        gpuLoad = values["gpuLoad"]
-        gpuMemory = values["gpuMemory"]
-        gpuTemp = values["gpuTemp"]
+        self.ui.textBrowserGpuLoad.setText(str(gpu_load))
+        self.ui.textBrowserGpuMemory.setText(str(gpu_memory))
+        self.ui.textBrowserGpuTemp.setText(str(gpu_temp))
 
+        # disk in MB/s
+        disk_read = values["disk_read"]
+        disk_write = values["disk_write"]
+        disk_total = values["disk_total"]
+        disk_wait = values["disk_wait_time"]
+        disk_queue = values["disk_queue"]
+        disk_usage = values["disk_usage"]
 
-        self.ui.textBrowserGpuLoad.setText(str(gpuLoad))
-        self.ui.textBrowserGpuMemory.setText(str(gpuMemory))
-        self.ui.textBrowserGpuTemp.setText(str(gpuTemp))
+        self.ui.textBrowserDiskReadSpeed.setText(str(disk_read))
+        self.ui.textBrowserDiskWriteSpeed.setText(str(disk_write))
+        self.ui.textBrowserDiskTotalSpeed.setText(str(disk_total))
+        self.ui.textBrowserDiskWaitTime.setText(str(disk_wait))
+        self.ui.textBrowserDiskQueue.setText(str(disk_queue))
+        self.ui.textBrowserDiskUsage.setText(str(disk_usage))
 
-        #disk in MB/s
-        # read, write, total = self.diskMonitor.diskIOSpeed()
-        #
-
-        diskRead = values["diskRead"]
-        diskWrite = values["diskWrite"]
-        diskTotal = values["diskTotal"]
-        diskWait = values["diskWaitTime"]
-        diskQueue = values["diskQueue"]
-        diskUsage = values["diskUsage"]
-
-        self.ui.textBrowserDiskReadSpeed.setText(str(diskRead))
-        self.ui.textBrowserDiskWriteSpeed.setText(str(diskWrite))
-        self.ui.textBrowserDiskTotalSpeed.setText(str(diskTotal))
-        self.ui.textBrowserDiskWaitTime.setText(str(diskWait))
-        self.ui.textBrowserDiskQueue.setText(str(diskQueue))
-        self.ui.textBrowserDiskUsage.setText(str(diskUsage))
-
-        #errors
-        if values["wheaError"]:
+        # errors
+        if values["whea_error"]:
             err = "Detected hardware error!"
         else:
             err = "No error detected"
 
         self.ui.textBrowserWHEA.setText(err)
 
-
-
-
         # if logging is enabled
         if self.isLogging:
             self.csv.update(values)
 
         end = time.time()
-        print("gui update time: " , end-start)
+        print("gui update time: ", end - start)
 
     # button functions
-
-    def manageTest(self):
-        thread = threading.Thread(target=self.__startTest, args= (self.ui.comboBoxTests.currentText(),))
+    def manage_test(self):
+        thread = threading.Thread(target=self.start_test, args=(self.ui.comboBoxTests.currentText(),))
         thread.start()
 
         self.ui.textBrowserTestTime.setText("Execution test...")
         self.testTime = "Execution test..."
 
-    def __startTest(self, testPath):
+    def start_test(self, test_path):
         self.ui.startTest.setEnabled(False)
 
-        time = self.tests.runUsingSpecyficPython(testPath)
+        time = self.tests.runUsingSpecyficPython(test_path)
 
         self.ui.startTest.setEnabled(True)
         print("czas testu do wyswietlenia", str(time), type(str(time)))
 
         # simple time update doesnt work, i think ith should by in main thread
         self.testTime = time
-        #self.ui.textBrowserTestTime.setText(str(time))
+        # self.ui.textBrowserTestTime.setText(str(time))
 
-
-
-
-    def clickedStartLogging(self):
+    def clickedS_start_logging(self):
         self.isLogging = True
         self.ui.StartLogging.setEnabled(False)
         self.ui.EndLogging.setEnabled(True)
 
-        self.csv = CsvWriter()
-
-
-    def clickedEndLogging(self):
+    def clicked_end_logging(self):
         self.isLogging = False
         self.ui.StartLogging.setEnabled(True)
         self.ui.EndLogging.setEnabled(False)
 
-if __name__ == "__main__":
 
+if __name__ == "__main__":
     app = QApplication(sys.argv)
-    win = Window(Cpu.getLogicalCpus())
+    win = Window()
     win.show()
     sys.exit(app.exec())

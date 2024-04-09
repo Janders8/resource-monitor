@@ -2,13 +2,11 @@ import time
 import pynvml
 import pandas as pd
 
-print("initiatedddd")
-
 class Gpu:
     pynvml.nvmlInit()
 
     @staticmethod
-    def initiateMonitor():
+    def initiate_monitor():
         df = pd.DataFrame()
         df["Gpu Load %"] = None
         df["Gpu Memory %"] = None
@@ -17,7 +15,7 @@ class Gpu:
         return df
 
     @staticmethod
-    def getGpuLoad():
+    def get_gpu_load():
         try:
             handle = pynvml.nvmlDeviceGetHandleByIndex(0)
             return pynvml.nvmlDeviceGetUtilizationRates(handle).gpu
@@ -26,16 +24,17 @@ class Gpu:
             return ""
 
     @staticmethod
-    def getGpuMemoryUsed():
+    def get_gpu_memory_used():
         try:
             handle = pynvml.nvmlDeviceGetHandleByIndex(0)
-            return round(pynvml.nvmlDeviceGetMemoryInfo(handle).used / pynvml.nvmlDeviceGetMemoryInfo(handle).total * 100, 2)
+            return round(
+                pynvml.nvmlDeviceGetMemoryInfo(handle).used / pynvml.nvmlDeviceGetMemoryInfo(handle).total * 100, 2)
         except Exception as e:
             print(e)
             return ""
 
     @staticmethod
-    def getGpuName():
+    def get_gpu_name():
         try:
             handle = pynvml.nvmlDeviceGetHandleByIndex(0)
             return pynvml.nvmlDeviceGetName(handle)
@@ -44,19 +43,10 @@ class Gpu:
             return ""
 
     @staticmethod
-    def getGpuTemp():
+    def get_gpu_temp():
         try:
             handle = pynvml.nvmlDeviceGetHandleByIndex(0)
             return pynvml.nvmlDeviceGetTemperature(handle, pynvml.NVML_TEMPERATURE_GPU)
         except Exception as e:
             print(e)
             return ""
-
-# while True:
-#     time.sleep(2)
-#
-#     print(Gpu.getGpuLoad())
-#     print(Gpu.getGpuMemoryUsed())
-#     print(Gpu.getGpuName())
-#     print(Gpu.getGpuTemp())
-#     print("\n")
