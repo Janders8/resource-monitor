@@ -17,7 +17,7 @@ else:
     sys.exit(1)
 
 from gui import *
-from CsvWriter import *
+from csv_writer import *
 from disk import *
 from errors import *
 import time
