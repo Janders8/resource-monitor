@@ -27,7 +27,7 @@ from PyQt5.QtWidgets import (
 )
 from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtCore import QThread
-from testSelect import Tests
+from test_select import Tests
 
 
 class WorkerThread(QThread):
