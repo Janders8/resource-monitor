@@ -18,20 +18,7 @@ class Disk:
 
         return df
 
-    # obsolety
-    @staticmethod
-    def disk_io_speed():
-        disk_io_before = psutil.disk_io_counters()
-        time.sleep(0.5)  # Wait for 1 second
-        disk_io_after = psutil.disk_io_counters()
 
-        # converting valuest to get MB/s
-        read_bytes = round((disk_io_after.read_bytes - disk_io_before.read_bytes) / 1024 / 1024 * 2, 2)
-        write_bytes = round((disk_io_after.write_bytes - disk_io_before.write_bytes) / 1024 / 1024 * 2, 2)
-
-        total_bytes = read_bytes + write_bytes
-
-        return read_bytes, write_bytes, total_bytes
 
     @staticmethod
     def disk_info():
